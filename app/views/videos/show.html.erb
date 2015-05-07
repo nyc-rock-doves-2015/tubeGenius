@@ -1,4 +1,6 @@
-<%= @video.title %>
+<h2><%= @video.title %></h2>
 <%= @video.description %>
-<%= @video.category %>
-<iframe width="560" height="315" src="//www.youtube.com/embed/<%= @video.url %>" frameborder="0" allowfullscreen></iframe>
+<%= @video.category %><br>
+<div>
+  <%= embed(@video.url) %>
+</div>
