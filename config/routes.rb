@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :videos
+  resources :videos do
+    resources :comments, :only => [:show, :new, :create]
+  end
 
   resource :session, :only => [:new, :create, :destroy]
   resources :users, :except => [:destroy]
