@@ -16,5 +16,4 @@ class ApplicationController < ActionController::Base
   def session_out!
     session[:user_id] = nil
   end
-
 end
