@@ -1,4 +1,4 @@
-<%= form_for(@video, @comment) do |f| %>
+<%= form_for [@video, @comment] do |f| %>
   <p><%= f.label "Content" %></p>
   <p><%= f.text_area :content, placeholder: "Content" %></p>
   <p><%= f.label "Start Time" %></p>
