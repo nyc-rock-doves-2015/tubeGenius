@@ -1,0 +1,20 @@
+<%= form_for(@video, @comment) do |f| %>
+  <p><%= f.label "Content" %></p>
+  <p><%= f.text_area :content, placeholder: "Content" %></p>
+  <p><%= f.label "Start Time" %></p>
+  <p><%= f.text_field :start_time, placeholder: "e.g. 4:11" %></p>
+  <p><%= f.label "End Time" %></p>
+  <p><%= f.text_field :end_time, placeholder: "e.g. 4:25" %></p>
+  <p><%= f.label "Media" %></p>
+  <p><%= f.text_field :media_url, placeholder: "Link for media" %></p>
+  <p><%= f.label "Media Type" %></p>
+
+  <%= f.radio_button :media_type, 'TEXT', :value => 'text'%>
+  <%= label :media_type, 'TEXT' %>
+  <%= f.radio_button :media_type, 'VIDEO', :value => 'video' %>
+  <%= label :media_type, 'VIDEO' %>
+  <%= f.radio_button :media_type, 'IMAGE', :value =>'image' %>
+  <%= label :media_type, 'IMAGE' %>
+
+  <p><%= f.submit "Submit" %></p>
+<% end %>
