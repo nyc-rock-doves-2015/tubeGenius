@@ -14,4 +14,11 @@ class VideosController < ApplicationController
       redirect_to new_video_path
     end
   end
+
+  private
+
+  def video_params
+    params.require(:video).permit(:title, :description, :url, :category, :availability)
+  end
+
 end
