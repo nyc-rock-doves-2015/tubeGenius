@@ -20,6 +20,12 @@ class VideosController < ApplicationController
     end
   end
 
+  def json_comments
+    video = Video.find(params[:video_id])
+    comments = video.comments
+    render json: comments
+  end
+
   private
 
   def video_params
