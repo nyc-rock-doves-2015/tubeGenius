@@ -9,7 +9,8 @@ class VideosController < ApplicationController
   end
 
   def create
-    video = Video.new(video_params)
+    user =  User.find(session[:user_id])
+    video = user.videos.build(video_params)
     if video.save
       flash[:notice] = "Your video has been posted!"
       redirect_to video_path(video)
@@ -22,7 +23,7 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:title, :description, :url, :category, :availability)
+    params.require(:video).permit(:title, :description, :url, :category, :availability, :user_id)
   end
 
 end
