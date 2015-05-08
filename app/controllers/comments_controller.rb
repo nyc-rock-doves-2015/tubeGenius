@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to video_path(video)
     else
+      flash[:notice] = "Sorry, your comment didn't save"
       render :new
     end
   end
