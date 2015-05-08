@@ -30,6 +30,7 @@ class VideosController < ApplicationController
         comment_arr << comment
       end
     end
+    
     json_arr << comment_arr
     render json: json_arr
   end
