@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :videos do
     resources :comments, :only => [:show, :new, :create]
     get 'json' => 'videos#json_comments', as: 'json'
+    resources :comments
+
   end
 
   resource :session, :only => [:new, :create, :destroy]

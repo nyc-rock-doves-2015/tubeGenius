@@ -1,0 +1,11 @@
+<h2> Conversation for <%= @comments.first.video.title %> </h2>
+
+<ul>
+  <% @comments.each do |comment| %>
+    <li><h5> <%= comment.user.name %> at <%= comment.created_at %></h5>
+      <p> <%= comment.start_time %> <%= comment.end_time%> </p>
+      <p> <%= comment.content %> </p>
+      <p> <%= link_to comment.media_type, comment.media_url %></p>
+    </li>
+  <% end %>
+</ul>
