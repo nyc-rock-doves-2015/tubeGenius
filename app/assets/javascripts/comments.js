@@ -9,7 +9,6 @@ App.getComments = function (video_id) {
   }).done(function (response) {
     json_data = response
   });
-
   return json_data;
 };
 
