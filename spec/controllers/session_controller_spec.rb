@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe SessionsController do
+RSpec.describe SessionsController do
   
   describe 'GET #new' do
     it "renders the :new view" do
