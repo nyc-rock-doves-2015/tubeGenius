@@ -8,6 +8,13 @@ class VideosController < ApplicationController
     @video = Video.new
   end
 
+  def destroy
+    video = Video.find(params[:id])
+    video.destroy
+
+    redirect_to root_path
+  end
+
   def create
     user =  User.find(session[:user_id])
     video = user.videos.build(video_params)
