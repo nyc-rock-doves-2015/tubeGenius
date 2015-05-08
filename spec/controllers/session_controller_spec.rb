@@ -10,14 +10,21 @@ RSpec.describe SessionsController do
   end
 
   describe 'POST #create' do
+    user = User.create!(name: "test_user33",
+                        password: "password",
+                        password_confirmation: "password")
+
     it "redirects to the user's :show page" do
-      user = User.create!(name: "test_user33",
-                          password: "password",
-                          password_confirmation: "password")
       post :create, user:{name: user.name, password: user.password}
       expect(response).to redirect_to(user_path(user))
     end
+    
+    it "sets the user id with #session_in!" do
+      expect(session[:user_id]).to eq(user.id)
+    end
   end
+
+
 
   describe 'DELETE #destroy' do
     it "redirects to new_user_path" do
