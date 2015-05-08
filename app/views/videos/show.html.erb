@@ -1,0 +1,7 @@
+<h2><%= @video.title %></h2>
+<p><%= @video.description %></p>
+<p><%= @video.category %></p>
+<p><%= @video.availability %></p>
+<div>
+  <%= embed(@video.url) %>
+</div>

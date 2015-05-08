@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :videos
+  resources :videos do
+    resources :comments
+    get 'json' => 'videos#json_url_and_comments', as: 'json'
+
+  end
 
   resource :session, :only => [:new, :create, :destroy]
   resources :users, :except => [:destroy]
