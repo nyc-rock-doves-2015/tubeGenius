@@ -1,12 +1,14 @@
 class CommentsController < ApplicationController
+  # before_action :authenticate_user!, except: [:show, :index]
+
   def new
     @video = Video.find(params[:video_id])
     @comment = @video.comments.new
   end
 
   def index
-    video = Video.find(params[:video_id])
-    @comments = video.comments
+    @video = Video.find(params[:video_id])
+    @comments = @video.comments
   end
 
   def create
@@ -23,6 +25,16 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
+  end
+
+  def destroy
+    comment = Comment.find(params[:id])
+    video = comment.video
+    if current_user == comment.user
+      comment.destroy
+    end
+
+    redirect_to video_path(video)
   end
 
   private

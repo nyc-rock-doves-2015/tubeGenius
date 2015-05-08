@@ -16,4 +16,21 @@ class ApplicationController < ActionController::Base
   def session_out!
     session[:user_id] = nil
   end
+
+  def authenticate_user!(return_point = request.url)
+    unless current_user
+      set_return_point(return_point)
+      redirect_to signin_path
+    end
+  end
+
+  def set_return_point(path, overwrite = false)
+    if overwrite || session[:return_point].blank?
+      session[:return_point] = path
+    end
+  end
+
+  def return_point
+    session[:return_point] || root_path
+  end
 end
