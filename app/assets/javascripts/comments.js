@@ -35,7 +35,6 @@ App.Popcorn.prototype.addComment = function () {
     var self = this;
     event.preventDefault();
     var $target = $(event.target);
-    console.log($target)
     $.ajax({
       url: $target.attr("action"),
       type: 'post',
