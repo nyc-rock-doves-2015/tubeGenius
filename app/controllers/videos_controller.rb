@@ -24,11 +24,13 @@ class VideosController < ApplicationController
     video = Video.find(params[:video_id])
     comments = video.comments
     json_arr << video.url
+    
     comments.each do |comment|
       if comment.start_time != nil
         json_arr << comment
       end
     end
+    
     render json: json_arr
   end
 
