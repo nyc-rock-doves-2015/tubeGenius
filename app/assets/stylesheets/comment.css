@@ -1,0 +1,24 @@
+#video {
+  display:inline-block;
+  margin: 0 auto;
+  padding-right:50px;
+  border-right: 1px solid black;
+}
+
+.comment {
+  font-size:20px;
+  margin:10px;
+  padding:10px;
+  border: 1px solid black;
+}
+
+#comments_container {
+  position:absolute;
+  display:inline-block;
+  height: 300px;
+  float:top;
+}
+
+.row {
+  height:300px;
+}
