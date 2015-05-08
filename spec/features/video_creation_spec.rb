@@ -31,4 +31,16 @@ RSpec.feature 'New video', :type => :feature do
 
      expect(page).to have_text("Personal")
   end
+
+  scenario "User creates a video without a URL" do
+    visit signin_path
+    fill_in "user[name]", :with => "test_user"
+    fill_in "user[password]", :with => "password"
+    click_on "Sign In"
+
+    visit "/videos/new"
+     click_button "Create Video"
+
+     expect(page).to have_selector("input[type=submit][value='Create Video']")
+  end
 end
