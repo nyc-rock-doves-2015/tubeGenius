@@ -26,7 +26,7 @@ App.Popcorn.prototype.showComments = function () {
       start: this.comments[x].start_time,
       end: this.comments[x].end_time,
       text: this.comments[x].content,
-      target: "comments_container"
+      target: "com"
     });
   }
 }

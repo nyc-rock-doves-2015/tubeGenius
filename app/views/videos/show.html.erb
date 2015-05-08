@@ -5,6 +5,8 @@
 <p><%= @video.description %></p>
 <p><%= @video.category %></p>
 <p><%= @video.availability %></p>
-<div id="video" style="width: 360px; height: 300px;"></div>
+<div class="row">
+  <div id="video" style="width: 360px; height: 300px;"></div>
+  <div id="comments_container"><ul id="com"></ul></div>
+</div>
 <div id="comment_form"><%= render "comments/form" %></div>
-<div id="comments_container"></div>
