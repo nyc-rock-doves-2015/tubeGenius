@@ -1,4 +1,5 @@
 <h2><%= @video.title %></h2>
+<%= link_to "Delete Video", { action: :destroy, id: @video.id }, method: :delete %>
 <p><%= @video.description %></p>
 <p><%= @video.category %></p>
 <p><%= @video.availability %></p>
