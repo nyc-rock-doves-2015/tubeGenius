@@ -17,6 +17,7 @@ App.popcorn = function (video_url, video_container, comment_array) {
   var vid_setup = Popcorn.HTMLYouTubeVideoElement(video_container);
   vid_setup.src = video_url + "&controls=2"
   this.video = Popcorn(vid_setup);
+  this.comments = comment_array;
 }
 
 //App.popcorn.prototype.showComments = function () {}
