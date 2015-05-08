@@ -10,25 +10,19 @@ describe SessionsController do
   end
 
   describe 'POST #create' do
-    context 'with valid attributes' do
-      it "creates a new session with the user's id" do
-      end
-      it "redirects to the user's :show page" do
-      end
-    end
-
-    context 'with invalid attributes' do
-      it "does not create a new session" do
-      end
-      it "flashes an error message" do
-      end
+    it "redirects to the user's :show page" do
+      user = User.create!(name: "test_user33",
+                          password: "password",
+                          password_confirmation: "password")
+      post :create, user:{name: user.name, password: user.password}
+      expect(response).to redirect_to(user_path(user))
     end
   end
 
   describe 'DELETE #destroy' do
-    it "signs a user out" do
-    end
-    it "redirects to root_path" do
+    it "redirects to new_user_path" do
+      delete :destroy
+      expect(response).to redirect_to(new_user_path)
     end
   end
 end
