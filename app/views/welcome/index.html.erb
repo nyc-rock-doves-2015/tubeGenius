@@ -1,7 +1,3 @@
-<%= link_to "Sign In", signin_path %>
-<%= link_to "Sign Up", signup_path %>
-<%= link_to "Sign Out", signout_path %><br><br>
-
-<% Video.all.each_with_index do |video, index| %>
-  <%= link_to "#{index + 1}.) #{video.title}", video_path(video) %><br>
-<% end %>
+<div class="embed-container">
+  <%= embed(Video.first.url) %>
+</div>
