@@ -25,9 +25,10 @@ RSpec.feature 'New video', :type => :feature do
     click_on "Sign In"
 
     visit "/videos/new"
+     fill_in "video_url", :with => "https://www.youtube.com/watch?v=ckpwSAv5we8"
      choose('video_availability_personal')
      click_button "Create Video"
 
-      expect(page).to have_text("Personal")
+     expect(page).to have_text("Personal")
   end
 end
