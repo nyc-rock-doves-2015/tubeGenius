@@ -22,3 +22,11 @@
 .row {
   height:300px;
 }
+
+.new_comment {
+  display:none;
+}
+
+#comment_button {
+  margin-top:15px;
+}
