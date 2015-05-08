@@ -11,7 +11,8 @@ RSpec.feature 'New video', :type => :feature do
    fill_in "user[password]", :with => "password"
    click_on "Sign In"
     visit "/videos/new"
-      fill_in "Title", :with => "Test Title"
+      fill_in "video_title", :with => "Test Title"
+      fill_in "video_url", :with => "https://www.youtube.com/watch?v=ckpwSAv5we8"
       click_button "Create Video"
 
       expect(page).to have_text("Test Title")
