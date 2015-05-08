@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150507193351) do
     t.string   "media_type"
     t.integer  "user_id"
     t.integer  "video_id"
+    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
