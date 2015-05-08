@@ -35,6 +35,5 @@ $(function () {
   var video_id = parseInt(window.location.href.match(/\d+$/));
   var results = App.getComments(video_id)
   var video = new App.Popcorn(results[0], "#video", results[1])
-  console.log(typeof video)
   video.showComments();
 });
