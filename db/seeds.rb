@@ -1,7 +1,7 @@
 require 'faker'
 
 15.times do
-  user = User.create(name: Faker::Lorem.word,
+  user = User.create(name: Faker::Internet.user_name,
                      email: Faker::Internet.safe_email,
                      password: Faker::Internet.password)
   10.times do
@@ -9,5 +9,12 @@ require 'faker'
                        description: Faker::Lorem.paragraph,
                        url: "https://www.youtube.com/watch?v=igp9sJkuAnU",
                        availability: "Public")
+  end
+end
+
+User.all.each do |user|
+  Video.all.each do |video|
+    video.comments.create(user_id: user.id,
+                          content: Faker::Lorem.paragraph)
   end
 end
