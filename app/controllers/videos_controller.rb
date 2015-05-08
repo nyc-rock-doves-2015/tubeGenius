@@ -20,7 +20,7 @@ class VideosController < ApplicationController
     end
   end
 
-  def json_comments(json_arr = [])
+  def json_url_and_comments(json_arr = [])
     video = Video.find(params[:video_id])
     comments = video.comments
     json_arr << video.url
