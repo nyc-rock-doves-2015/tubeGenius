@@ -37,6 +37,7 @@ group :development, :test do
   gem 'rack_session_access'
   gem 'simplecov'
   gem 'database_cleaner'
+  gem 'jasmine-rails'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
