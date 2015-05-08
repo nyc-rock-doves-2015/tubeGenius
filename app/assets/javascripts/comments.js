@@ -20,10 +20,20 @@ App.Popcorn = function (video_url, video_container, comment_array) {
   this.comments = comment_array;
 }
 
-//App.Popcorn.prototype.showComments = function () {}
+App.Popcorn.prototype.showComments = function () {
+  for(x=0; x<this.comments.length; x++){
+    this.video.footnote({
+      start: this.comments[x].start_time,
+      end: this.comments[x].end_time,
+      text: this.comments[x].content,
+      target: "comments_container"
+    });
+  }
+}
 
 $(function () {
   var video_id = parseInt(window.location.href.match(/\d+$/));
   var results = App.getComments(video_id)
   var video = new App.Popcorn(results[0], "#video", results[1])
+  video.showComments();
 });
