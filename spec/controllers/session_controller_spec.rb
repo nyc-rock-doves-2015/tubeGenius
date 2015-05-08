@@ -35,5 +35,11 @@ RSpec.describe SessionsController do
       delete :destroy
       expect(response).to redirect_to(new_user_path)
     end
+
+    it "sets the user_id of session to nil" do
+      session[:user_id] = 1
+      delete :destroy
+      expect(session[:user_id]).to eq(nil)
+    end
   end
 end
