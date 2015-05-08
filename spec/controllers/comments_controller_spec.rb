@@ -48,4 +48,12 @@ RSpec.describe CommentsController do
       expect(response).to render_template("show")
     end
   end
+
+  describe 'DELETE' do
+    it "deletes a comment" do
+      video = Video.create(title: "hello", url: "https://www.youtube.com/watch?v=hR_eQ3EqOvc")
+      comment = video.comments.create(content: "yolo")
+      expect {delete :destroy, {video_id: video.id, id: comment.id}}.to change(Comment, :count).by(-1)
+    end
+  end
 end
