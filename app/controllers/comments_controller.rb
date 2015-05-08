@@ -7,8 +7,8 @@ class CommentsController < ApplicationController
   end
 
   def index
-    video = Video.find(params[:video_id])
-    @comments = video.comments
+    @video = Video.find(params[:video_id])
+    @comments = @video.comments
   end
 
   def create
@@ -30,7 +30,9 @@ class CommentsController < ApplicationController
   def destroy
     comment = Comment.find(params[:id])
     video = comment.video
-    comment.destroy
+    if current_user == comment.user
+      comment.destroy
+    end
 
     redirect_to video_path(video)
   end
