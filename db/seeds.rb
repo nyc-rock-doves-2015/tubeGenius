@@ -1,10 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-user = User.create(name: "mrpants", email: "amihalop:gmail.com", password: "yolo")
+require 'faker'
 
-video = user.videos.create(title: "Video Number 1, ya hur", description: "this is the description dawg", url: "https://www.youtube.com/watch?v=hR_eQ3EqOvc", category: "funny")
+15.times do
+  user = User.create(name: Faker::Internet.user_name,
+                     email: Faker::Internet.safe_email,
+                     password: Faker::Internet.password)
+  10.times do
+    user.videos.create(title: Faker::Name.title,
+                       description: Faker::Lorem.paragraph,
+                       url: "https://www.youtube.com/watch?v=igp9sJkuAnU",
+                       availability: "Public")
+  end
+end
+
+User.all.each do |user|
+  Video.all.each do |video|
+    video.comments.create(user_id: user.id,
+                          content: Faker::Lorem.paragraph)
+  end
+end
