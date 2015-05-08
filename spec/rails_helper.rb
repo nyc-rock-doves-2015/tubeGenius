@@ -8,6 +8,9 @@ require 'capybara/rails'
 require 'rack/test'
 require "rack_session_access/capybara"
 
+require 'simplecov'
+SimpleCov.start
+
 Capybara.register_driver :chrome do |app|
  Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
