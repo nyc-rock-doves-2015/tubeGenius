@@ -8,7 +8,7 @@ class CreateComments < ActiveRecord::Migration
       t.string :media_type
       t.references :user
       t.references :video
-
+      t.references :parent
       t.timestamps
     end
   end

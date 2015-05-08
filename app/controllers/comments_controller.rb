@@ -4,9 +4,12 @@ class CommentsController < ApplicationController
     @comment = @video.comments.new
   end
 
+  def index
+    video = Video.find(params[:video_id])
+    @comments = video.comments
+  end
+
   def create
-    puts "*****************"
-    puts params[:video_id]
     video = Video.find(params[:video_id])
     @comment = video.comments.new(comment_params)
 

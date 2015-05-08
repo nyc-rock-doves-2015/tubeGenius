@@ -1,0 +1,8 @@
+<h5> <%= comment.user.name %> at <%= comment.created_at %></h5>
+<p> <%= comment.start_time %> <%= comment.end_time%> </p>
+
+<p> <%= comment.content %> </p>
+<p> <%= link_to comment.media_type, comment.media_url %></p>
+<ul>
+  <%= render comment.children %>
+</ul>
