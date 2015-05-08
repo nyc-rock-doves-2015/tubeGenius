@@ -1,4 +1,4 @@
-var App = {};
+var App = function() {};
 
 App.getComments = function (video_id) {
 
@@ -8,23 +8,22 @@ App.getComments = function (video_id) {
     type: 'get'
   }).done(function (response) {
     json_data = response
-  })
+  });
 
   return json_data;
 };
 
 App.popcorn = function (video_url, video_container, comment_array) {
-  var vid_setup = Popcorn.HTMLYouTubeVideoElement(video_container)
+  var vid_setup = Popcorn.HTMLYouTubeVideoElement(video_container);
   vid_setup.src = video_url + "&controls=2"
-  this.video = Popcorn(vid_setup)
+  this.video = Popcorn(vid_setup);
 }
 
-App.popcorn.prototype.showComments = function () {
-
-}
+//App.popcorn.prototype.showComments = function () {}
 
 $(function () {
   var video_id = parseInt(window.location.href.match(/\d+$/));
   var results = App.getComments(video_id)
-  var video = App.popcorn(results[0], "#video", results[1])
-}
+  var video = new App.popcorn(results[0], "#video", results[1])
+  console.log("loaded")
+});
