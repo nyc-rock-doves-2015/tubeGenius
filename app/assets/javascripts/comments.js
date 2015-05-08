@@ -9,7 +9,6 @@ App.getComments = function (video_id) {
   }).done(function (response) {
     json_data = response
   });
-
   return json_data;
 };
 
@@ -26,14 +25,37 @@ App.Popcorn.prototype.showComments = function () {
       start: this.comments[x].start_time,
       end: this.comments[x].end_time,
       text: this.comments[x].content,
-      target: "comments_container"
+      target: "com"
     });
   }
 }
 
+App.Popcorn.prototype.addComment = function () {
+  $('.new_comment').on("submit", function (event) {
+    var self = this;
+    event.preventDefault();
+    var $target = $(event.target);
+    $.ajax({
+      url: $target.attr("action"),
+      type: 'post',
+      data: $target.serialize()
+    }).done(function (response) {
+      // self.comments.push({start: parseInt($target[0][3].value), 
+      //   end: parseInt($target[0][4].value), text: $target[0][2].value, 
+      //   target: "com"});
+      // self.showComments();
+      $(".new_comment").toggle();
+    })
+  })
+}
+
 $(function () {
   var video_id = parseInt(window.location.href.match(/\d+$/));
-  var results = App.getComments(video_id)
-  var video = new App.Popcorn(results[0], "#video", results[1])
+  var results = App.getComments(video_id);
+  var video = new App.Popcorn(results[0], "#video", results[1]);
   video.showComments();
+  video.addComment();
+  $('#comment_button').on("click", function () {
+    $(".new_comment").toggle();
+  })
 });
