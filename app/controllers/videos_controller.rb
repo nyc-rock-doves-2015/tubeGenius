@@ -20,17 +20,17 @@ class VideosController < ApplicationController
     end
   end
 
-  def json_url_and_comments(json_arr = [])
+  def json_url_and_comments(json_arr = [], comment_arr = [])
     video = Video.find(params[:video_id])
     comments = video.comments
     json_arr << video.url
     
     comments.each do |comment|
       if comment.start_time != nil
-        json_arr << comment
+        comment_arr << comment
       end
     end
-    
+    json_arr << comment_arr
     render json: json_arr
   end
 
