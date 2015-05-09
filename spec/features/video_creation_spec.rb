@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'New video', :type => :feature do
- User.create(name: "test_user",
-                password: "password",
-                password_confirmation: "password")
+  let!(:user) { User.create(name: "username", password: 'password', password_confirmation: 'password')}
 
   scenario "User creates a new video" do
    visit signin_path
