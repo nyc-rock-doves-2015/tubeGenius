@@ -30,7 +30,7 @@ RSpec.describe SessionsController do
     end
 
     it "sets the user_id of session to nil" do
-      session[:user_id] = 1
+      post :create, user:{name: user.name, password: user.password}
       delete :destroy
       expect(session[:user_id]).to eq(nil)
     end
