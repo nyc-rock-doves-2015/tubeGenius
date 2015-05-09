@@ -12,6 +12,22 @@ App.getComments = function (video_id) {
   return json_data;
 };
 
+App.initNewComment = function (popcorn_instance) {
+  var end_time;
+  $('#comment_button').on("click", function (event) {
+    $(".new_comment").toggle();
+    $('.new_comment')[0][3].value = Math.floor(popcorn_instance.video.currentTime());
+    end_time = setInterval(function () {
+        $('.new_comment')[0][4].value = Math.floor(popcorn_instance.video.currentTime());
+      }, 100);
+    end_time
+  });
+
+  $('#comment_end_time').click(function () {
+    clearInterval(end_time);
+  })
+}
+
 App.Popcorn = function (video_url, video_container, comment_array) {
   var vid_setup = Popcorn.HTMLYouTubeVideoElement(video_container);
   vid_setup.src = video_url + "&controls=2"
@@ -45,7 +61,7 @@ App.Popcorn.prototype.addComment = function () {
       type: 'post',
       data: $target.serialize()
     }).done(function (response) {
-      this.video.footnote({start: parseInt($start.value), end: parseInt($end.value), text: $text.value, target: "com"});
+      self.video.footnote({start: parseInt($start.value), end: parseInt($end.value), text: $text.value, target: "com"});
       $start.value = ""; 
       $end.value = ""; 
       $text.value = "";
@@ -58,11 +74,8 @@ $(function () {
   var video_id = parseInt(window.location.href.match(/\d+$/));
   var results = App.getComments(video_id);
   var video = new App.Popcorn(results[0], "#video", results[1]);
+  App.initNewComment(video);
 
   video.showComments();
   video.addComment();
-  
-  $('#comment_button').on("click", function () {
-    $(".new_comment").toggle();
-  })
 });
