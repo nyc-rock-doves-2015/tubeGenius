@@ -9,8 +9,9 @@
   <p> <%= link_to "delete", video_comment_path(comment.commentable, comment), method: :delete %> |
   <%= link_to "edit", edit_video_comment_path(comment.commentable, comment) %></p>
 <% end %>
-
+<% if comment.media_url %>
 <p> Media: <%= link_to comment.media_type, comment.media_url %></p>
+<% end %>
 
 <%= link_to "Respond to comment", new_comment_path(comment.id) %>
 <ul>
