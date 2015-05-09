@@ -34,7 +34,6 @@ class CommentsController < ApplicationController
   def create
     if params[:comment_id]
       @parent_comment = Comment.find(params[:comment_id])
-      video = Video.find(params[:video_id])
       @comment = @parent_comment.comments.create(comment_params)
     else
       video = Video.find(params[:video_id])
@@ -42,7 +41,7 @@ class CommentsController < ApplicationController
     end
 
     if @comment.save
-      redirect_to video_path(video)
+      redirect_to return_point
     else
       flash[:notice] = "Sorry, your comment didn't save"
       render :new
