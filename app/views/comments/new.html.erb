@@ -1,1 +1,5 @@
-<%= render 'form' %>
+<% if @video %>
+  <%= render 'form' %>
+<% else %>
+  <%= render 'subform' %>
+<% end %>
