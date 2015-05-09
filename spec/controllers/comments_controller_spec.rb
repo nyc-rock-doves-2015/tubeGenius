@@ -29,8 +29,7 @@ RSpec.describe CommentsController do
   describe 'POST create' do
     it "creates a new comment" do
       video = Video.create(title: "hello", url: "https://www.youtube.com/watch?v=hR_eQ3EqOvc")
-      post :create, :video_id => video.id, comment: {content: "yolo4lyfe"}
-      expect(response).to redirect_to video_path(video)
+      expect(post :create, {:commentable_id => video.id, commentable_type: 'Video', comment: {content: "yolo4lyfe"}}).to change(Comment, :count).by(1)
     end
 
     it "does not create a new comment if content is empty" do
