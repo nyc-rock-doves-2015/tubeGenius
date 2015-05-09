@@ -34,14 +34,21 @@ App.Popcorn.prototype.addComment = function () {
   var self = this;
   $('.new_comment').on("submit", function (event) {
     event.preventDefault();
+
     var $target = $(event.target);
+    var $text = $target[0][2];
+    var $start = $target[0][3];
+    var $end = $target[0][4];
+
     $.ajax({
       url: $target.attr("action"),
       type: 'post',
       data: $target.serialize()
     }).done(function (response) {
-      self.video.footnote({start: parseInt($target[0][3].value), 
-        end: parseInt($target[0][4].value), text: $target[0][2].value, target: "com"});
+      this.video.footnote({start: parseInt($start.value), end: parseInt($end.value), text: $text.value, target: "com"});
+      $start.value = ""; 
+      $end.value = ""; 
+      $text.value = "";
       $(".new_comment").toggle();
     })
   })
@@ -51,8 +58,10 @@ $(function () {
   var video_id = parseInt(window.location.href.match(/\d+$/));
   var results = App.getComments(video_id);
   var video = new App.Popcorn(results[0], "#video", results[1]);
+
   video.showComments();
   video.addComment();
+  
   $('#comment_button').on("click", function () {
     $(".new_comment").toggle();
   })
