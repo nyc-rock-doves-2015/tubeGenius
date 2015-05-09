@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'New comment', :type => :feature do
 
-    user = User.create(name: "test_user",
-                       password: "password",
-                       password_confirmation: "password")
+  let!(:user) { User.create(name: "username", password: 'password', password_confirmation: 'password')}
 
     video = Video.create(title: "test",
                                url: "https://www.youtube.com/watch?v=ckpwSAv5we8",
