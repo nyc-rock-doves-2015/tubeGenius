@@ -17,6 +17,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session_out!
-    redirect_to root_path
+    redirect_to new_user_path
   end
 end
