@@ -1,0 +1,17 @@
+<%= form_for [@subcomment], url: video_comments_path(@comment.commentable, comment_id: @comment.id) do |f| %>
+
+  <p><%= f.label "Content" %></p>
+  <p><%= f.text_area :content, placeholder: "Content" %></p>
+
+  <p><%= f.text_field :media_url, placeholder: "Link for media" %></p>
+  <p><%= f.label "Media Type" %></p>
+
+  <%= f.radio_button :media_type, 'TEXT', :value => 'text', :checked => true %>
+  <%= label :media_type, 'TEXT' %>
+  <%= f.radio_button :media_type, 'VIDEO', :value => 'video' %>
+  <%= label :media_type, 'VIDEO' %>
+  <%= f.radio_button :media_type, 'IMAGE', :value =>'image' %>
+  <%= label :media_type, 'IMAGE' %>
+
+  <p><%= f.submit "Enter" %></p>
+<% end %>

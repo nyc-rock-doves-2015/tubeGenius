@@ -1,9 +1,14 @@
-<h5>  at <%= comment.created_at %></h5>
+<h5> <%= comment.user ? comment.user.name : "guest" %> at <%= comment.created_at %></h5>
 <p> <%= comment.start_time %> <%= comment.end_time%> </p>
 
 <p> <%= comment.content %> </p>
-<%= link_to "delete", video_comment_path(comment.video, comment), method: :delete %>
-<p> <%= link_to comment.media_type, comment.media_url %></p>
+
+
+<% if comment.media_url %>
+<p> Media: <%= link_to comment.media_type, comment.media_url %></p>
+<% end %>
+
+<%= link_to "Respond to comment", new_comment_path(comment.id) %>
 <ul>
-  <%= render comment.children %>
+  <%= render comment.comments %>
 </ul>
