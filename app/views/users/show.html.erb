@@ -16,7 +16,6 @@
   <h3>Comments</h3>
   <% @user.comments.each do |comment| %>
     <div>
-      <h4><%= link_to comment.commentable.title, video_path(comment.commentable)if (comment.commentable_type == "Video") %></h4>
       <p><%= "#{@user.name} on #{comment.created_at}:" %></p>
       <p><%= comment.content %> <%= "(#{start_time}-#{end_time})" if comment.start_time %> </p>
     </div>
