@@ -54,12 +54,11 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find(params[:id])
-    video = comment.video
     if current_user == comment.user || current_user == video.user
       comment.destroy
     end
 
-    redirect_to video_path(video)
+    redirect_to root_path
   end
 
   private
