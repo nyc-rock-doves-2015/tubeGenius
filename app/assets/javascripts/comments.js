@@ -13,17 +13,16 @@ App.getComments = function (video_id) {
 };
 
 App.initNewComment = function (popcorn_instance) {
-  var end_time;
   $('#comment_button').on("click", function (event) {
     $(".new_comment").toggle();
     $('.new_comment')[0][3].value = Math.floor(popcorn_instance.video.currentTime());
-    // end_time = setInterval(function () {
-    //     $('.new_comment')[0][4].value = Math.floor(popcorn_instance.video.currentTime());
-    //   }, 100);
-    // end_time
-    // $('#comment_end_time').click(function () {
-    //   clearInterval(end_time);
-    // })
+    var end_time = setInterval(function () {
+        $('.new_comment')[0][4].value = Math.floor(popcorn_instance.video.currentTime() + 5);
+      }, 100);
+
+    $('#comment_end_time').click(function () {
+      clearInterval(end_time);
+    })
   });
 }
 
