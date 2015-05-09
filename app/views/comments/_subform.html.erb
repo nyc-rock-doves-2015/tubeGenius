@@ -1,4 +1,5 @@
 <%= form_for [@subcomment], url: video_comments_path(@comment.commentable, comment_id: @comment.id) do |f| %>
+
   <p><%= f.label "Content" %></p>
   <p><%= f.text_area :content, placeholder: "Content" %></p>
 
