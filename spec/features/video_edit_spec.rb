@@ -4,10 +4,7 @@ RSpec.feature 'Edit video', :type => :feature do
  let!(:user) { User.create(name: "username", password: 'password', password_confirmation: 'password')}
 
   scenario "User can edit a video" do
-   visit signin_path
-   fill_in "user[name]", :with => "test_user"
-   fill_in "user[password]", :with => "password"
-   click_on "Sign In"
+   page.set_rack_session(user_id: user.id)
 
     visit "/videos/new"
       fill_in "video_title", :with => "Test Title"
