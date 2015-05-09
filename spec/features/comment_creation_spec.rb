@@ -4,9 +4,7 @@ RSpec.feature 'New comment', :type => :feature do
 
   let!(:user) { User.create(name: "username", password: 'password', password_confirmation: 'password')}
 
-    video = Video.create(title: "test",
-                               url: "https://www.youtube.com/watch?v=ckpwSAv5we8",
-                               user_id: 1)
+  let!(:video) { Video.create(title: "test", url: "https://www.youtube.com/watch?v=ckpwSAv5we8", user_id: user.id)}
 
   scenario "User creates a new comment" do
    visit signin_path
