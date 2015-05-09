@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Edit video', :type => :feature do
- User.create(name: "test_user",
-             password: "password",
-             password_confirmation: "password")
+ let!(:user) { User.create(name: "username", password: 'password', password_confirmation: 'password')}
 
   scenario "User can edit a video" do
    visit signin_path
