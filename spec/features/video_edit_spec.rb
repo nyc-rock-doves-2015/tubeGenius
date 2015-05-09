@@ -18,5 +18,4 @@ RSpec.feature 'Edit video', :type => :feature do
 
       expect(page).to have_text("Edited Title")
   end
-
 end
