@@ -29,33 +29,26 @@
     <section class="top-bar-section">
       <!-- Right Nav Section -->
       <ul class="right">
+        <li class="has-form">
+          <div class="row collapse">
+            <div class="large-8 small-9 columns">
+              <input type="text" placeholder="Find Stuff">
+            </div>
+            <div class="large-4 small-3 columns">
+              <a href="#" class="alert button expand">Search</a>
+            </div>
+          </div>
+        </li>
         <li class="active"><a href="<%= signup_path %>">Sign Up</a></li>
-        <li class="has-dropdown">
-          <a href="#">Sign In</a>
-          <ul class="dropdown">
-            <li>
-              <h5>Log In:</h5>
-              <form id="top-nav-login" action="login.xqy" method="post">
-                <div class="row">
-                  <label>Email Address</label>
-                  <input type="email" name="email" placeholder="email@example.com" tabindex="1"/>
-                </div>
-                <div class="row">
-                  <label>Password</label>
-                  <input type="password" name="email" placeholder="********" tabindex="2"/>
-                </div>
-                <div class="row">
-                  <input type="submit" class="button tiny success" value="Login" tabindex="3"/>
-                </div>
-              </form>
-            </li>
-          </ul>
+        <li><a href="#" data-reveal-id="myModal" id="buttonForModal">Sign In</a>
         </li>
       </ul>
 
     </section>
   </nav>
+
 </div>
+
     <%= yield %>
 
   </body>
