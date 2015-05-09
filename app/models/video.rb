@@ -1,7 +1,7 @@
 class Video < ActiveRecord::Base
 
   belongs_to :user
-  has_many :comments
+  has_many :comments, as: :commentable
 
   validates :title, presence: true
   validates :url, presence: true
