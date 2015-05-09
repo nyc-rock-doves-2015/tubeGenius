@@ -2,19 +2,12 @@ require 'rails_helper'
 
 RSpec.feature 'New comment', :type => :feature do
 
-    user = User.create(name: "test_user",
-                       password: "password",
-                       password_confirmation: "password")
+  let!(:user) { User.create(name: "username", password: 'password', password_confirmation: 'password')}
 
-    video = Video.create(title: "test",
-                               url: "https://www.youtube.com/watch?v=ckpwSAv5we8",
-                               user_id: 1)
+  let!(:video) { Video.create(title: "test", url: "https://www.youtube.com/watch?v=ckpwSAv5we8", user_id: user.id)}
 
   scenario "User creates a new comment" do
-   visit signin_path
-     fill_in "user[name]", :with => "test_user"
-     fill_in "user[password]", :with => "password"
-     click_on "Sign In"
+   page.set_rack_session(user_id: user.id)
 
    visit new_video_comment_path(video)
      fill_in "comment[content]", :with => "test content"
