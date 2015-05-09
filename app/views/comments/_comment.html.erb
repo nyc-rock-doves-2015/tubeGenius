@@ -4,7 +4,7 @@
 <p> <%= comment.content %> </p>
 
 <% if current_user == comment.commentable.user %>
-  <!-- allow user to delete this comment -->
+  <!-- allow user to delete this -->
 <% elsif current_user == comment.user %>
   <p> <%= link_to "delete", video_comment_path(comment.commentable, comment), method: :delete %> |
   <%= link_to "edit", edit_video_comment_path(comment.commentable, comment) %></p>
