@@ -1,5 +1,8 @@
 require 'faker'
 
+User.create(name: "admin",
+            password: "password")
+
 15.times do
   user = User.create(name: Faker::Internet.user_name,
                      email: Faker::Internet.safe_email,
