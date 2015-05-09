@@ -7,10 +7,7 @@ RSpec.feature 'New comment', :type => :feature do
   let!(:video) { Video.create(title: "test", url: "https://www.youtube.com/watch?v=ckpwSAv5we8", user_id: user.id)}
 
   scenario "User creates a new comment" do
-   visit signin_path
-     fill_in "user[name]", :with => "test_user"
-     fill_in "user[password]", :with => "password"
-     click_on "Sign In"
+   page.set_rack_session(user_id: user.id)
 
    visit new_video_comment_path(video)
      fill_in "comment[content]", :with => "test content"
