@@ -10,4 +10,8 @@ describe User do
     expect(@user).to be_valid
   end
 
+  it "is invalid without a name" do
+    expect{create(:user, :name => nil)}.to raise_error
+  end
+
 end
