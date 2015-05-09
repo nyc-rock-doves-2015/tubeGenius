@@ -1,4 +1,4 @@
-<h5> <%= comment.user ? comment.user.name : "guest" %> at <%= comment.created_at %></h5>
+<h5> <%= comment.user ? (link_to comment.user.name, user_path(comment.user)) : "guest" %> at <%= comment.created_at %></h5>
 <p> <%= comment.start_time %> <%= comment.end_time%> </p>
 
 <p> <%= comment.content %> </p>
