@@ -7,8 +7,7 @@ class CreateComments < ActiveRecord::Migration
       t.string :media_url
       t.string :media_type
       t.references :user
-      t.references :video
-      t.references :parent
+      t.references :commentable, polymorphic: true, index: true
       t.timestamps
     end
   end

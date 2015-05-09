@@ -23,11 +23,13 @@ ActiveRecord::Schema.define(version: 20150507193351) do
     t.string   "media_url"
     t.string   "media_type"
     t.integer  "user_id"
-    t.integer  "video_id"
-    t.integer  "parent_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",            null: false
