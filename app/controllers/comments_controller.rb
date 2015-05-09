@@ -1,9 +1,14 @@
 class CommentsController < ApplicationController
-  # before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index]
 
   def new
-    @video = Video.find(params[:video_id])
-    @comment = @video.comments.new
+    if params[:parent_id]
+      @comment = Comment.find(params[:parent_id])
+      @subcomment = @comment.comments.new
+    else
+     @video = Video.find(params[:video_id])
+     @comment = @video.comments.new
+    end
   end
 
   def index
@@ -11,9 +16,30 @@ class CommentsController < ApplicationController
     @comments = @video.comments
   end
 
-  def create
+  def edit
     video = Video.find(params[:video_id])
-    @comment = video.comments.new(comment_params)
+    @comment = video.comments.find(params[:id])
+  end
+
+  def update
+    video = Video.find(params[:video_id])
+    @comment = video.comments.find(params[:id])
+    if @comment.update_attributes(comment_params)
+      redirect_to video_path(video)
+    else
+      render :edit
+    end
+  end
+
+  def create
+    if params[:comment_id]
+      @parent_comment = Comment.find(params[:comment_id])
+      video = Video.find(params[:video_id])
+      @comment = @parent_comment.comments.create(comment_params)
+    else
+      video = Video.find(params[:video_id])
+      @comment = video.comments.new(comment_params)
+    end
 
     if @comment.save
       redirect_to video_path(video)
@@ -30,7 +56,7 @@ class CommentsController < ApplicationController
   def destroy
     comment = Comment.find(params[:id])
     video = comment.video
-    if current_user == comment.user
+    if current_user == comment.user || current_user == video.user
       comment.destroy
     end
 
