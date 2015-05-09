@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index]
+  # before_action :authenticate_user!, except: [:show, :index]
 
   def new
     if params[:parent_id]
@@ -34,14 +34,14 @@ class CommentsController < ApplicationController
   def create
     if params[:comment_id]
       @parent_comment = Comment.find(params[:comment_id])
-      @comment = @parent_comment.comments.create(comment_params)
+      @comment = @parent_comment.comments.build(comment_params)
     else
       video = Video.find(params[:video_id])
-      @comment = video.comments.new(comment_params)
+      @comment = video.comments.build(comment_params)
     end
 
     if @comment.save
-      redirect_to return_point
+      redirect_to root_path
     else
       flash[:notice] = "Sorry, your comment didn't save"
       render :new
