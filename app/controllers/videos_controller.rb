@@ -1,8 +1,10 @@
 class VideosController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
 
   def show
     @video = Video.find(params[:id])
     @comment = @video.comments.new
+    @comments = @video.comments
   end
 
   def new
@@ -45,13 +47,13 @@ class VideosController < ApplicationController
     video = Video.find(params[:video_id])
     comments = video.comments
     json_arr << video.url
-    
+
     comments.each do |comment|
       if comment.start_time != nil
         comment_arr << comment
       end
     end
-    
+
     json_arr << comment_arr
     render json: json_arr
   end
