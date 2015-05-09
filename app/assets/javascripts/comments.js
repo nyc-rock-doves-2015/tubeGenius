@@ -17,15 +17,14 @@ App.initNewComment = function (popcorn_instance) {
   $('#comment_button').on("click", function (event) {
     $(".new_comment").toggle();
     $('.new_comment')[0][3].value = Math.floor(popcorn_instance.video.currentTime());
-    end_time = setInterval(function () {
-        $('.new_comment')[0][4].value = Math.floor(popcorn_instance.video.currentTime());
-      }, 100);
-    end_time
+    // end_time = setInterval(function () {
+    //     $('.new_comment')[0][4].value = Math.floor(popcorn_instance.video.currentTime());
+    //   }, 100);
+    // end_time
+    // $('#comment_end_time').click(function () {
+    //   clearInterval(end_time);
+    // })
   });
-
-  $('#comment_end_time').click(function () {
-    clearInterval(end_time);
-  })
 }
 
 App.Popcorn = function (video_url, video_container, comment_array) {

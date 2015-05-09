@@ -14,7 +14,3 @@
 <div id="comment_form"><%= render "comments/form" %></div>
 <div id="static_comments_container"> <%= render :template => 'comments/index', locals: {comments: @comments} %></div>
 
-<!-- <div id="comments_container"> <%= render :template => 'comments/index', locals: {comments: @comments} %> -->
-
-  <%= link_to "Add comment", new_video_comment_path(@video) %>
-</div>
