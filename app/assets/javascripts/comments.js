@@ -31,8 +31,8 @@ App.Popcorn.prototype.showComments = function () {
 }
 
 App.Popcorn.prototype.addComment = function () {
+  var self = this;
   $('.new_comment').on("submit", function (event) {
-    var self = this;
     event.preventDefault();
     var $target = $(event.target);
     $.ajax({
@@ -40,10 +40,8 @@ App.Popcorn.prototype.addComment = function () {
       type: 'post',
       data: $target.serialize()
     }).done(function (response) {
-      // self.comments.push({start: parseInt($target[0][3].value), 
-      //   end: parseInt($target[0][4].value), text: $target[0][2].value, 
-      //   target: "com"});
-      // self.showComments();
+      self.video.footnote({start: parseInt($target[0][3].value), 
+        end: parseInt($target[0][4].value), text: $target[0][2].value, target: "com"});
       $(".new_comment").toggle();
     })
   })
