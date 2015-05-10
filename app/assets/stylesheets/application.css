@@ -16,6 +16,10 @@
 
  */
 
+ .row {
+  margin:0px;
+ }
+
 .embed-container {
   position: relative;
   padding-bottom: 56.25%;
