@@ -1,11 +1,9 @@
 <h2><%= @video.title %></h2>
 
-<% if current_user.id == @video.user_id %>
-<%= link_to "Delete Video", { action: :destroy, id: @video.id }, method: :delete %>
+<% if current_user && current_user.id == @video.user_id %>
+  <%= link_to "Delete Video", { action: :destroy, id: @video.id }, method: :delete %>
+  <%= link_to "Edit Video", edit_video_path(@video) %>
 <% end %>
-
-
-<%= link_to "Edit Video", edit_video_path(@video) %>
 
 <p><%= @video.description %></p>
 <p><%= @video.category %></p>
