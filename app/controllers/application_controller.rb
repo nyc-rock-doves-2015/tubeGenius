@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!(return_point = request.url)
-    unless current_user
+    if !current_user
       set_return_point(return_point)
       redirect_to signin_path
     end

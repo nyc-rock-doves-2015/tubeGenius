@@ -1,5 +1,6 @@
 class VideosController < ApplicationController
-  # before_action :authenticate_user!, except: [:show, :index]
+
+  before_action :authenticate_user!, only: [:new, :destroy, :edit]
 
   def show
     @video = Video.find(params[:id])
@@ -20,7 +21,7 @@ class VideosController < ApplicationController
     if @video.update_attributes(video_params)
       redirect_to video_path(@video)
     else
-      render 'edit'
+      redirect_to edit_video_path(@video)
     end
   end
 
