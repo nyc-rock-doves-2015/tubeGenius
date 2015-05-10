@@ -16,4 +16,6 @@
 //= require_tree .
 //= require popcorn.js
 
-$(function(){ $(document).foundation(); });
+$(function() {
+  $(document).foundation();
+});
