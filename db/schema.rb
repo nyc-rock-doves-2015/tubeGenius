@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20150511151205) do
 
   # These are extensions that must be enabled in order to support this database
@@ -85,11 +86,13 @@ ActiveRecord::Schema.define(version: 20150511151205) do
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",            null: false
+    t.string   "name",               null: false
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "oauth_token"
+    t.string   "oauth_token_secret"
   end
 
   create_table "videos", force: :cascade do |t|
