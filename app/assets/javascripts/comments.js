@@ -42,7 +42,7 @@ App.formatSeconds = function (seconds) {
 App.formatComment = function (start, end, content) {
   var start = App.formatSeconds(start);
   var end = App.formatSeconds(end);
-  return "<a href='#' id='timeclick'>" + "@" + start + "-" + end + "</a>" + "<br>" + content
+  return "@" + start + "-" + end + "</a>" + "<br>" + content
 }
 
 App.Popcorn = function (video_url, video_container, comment_array) {
