@@ -22,4 +22,14 @@ RSpec.feature 'User', :type => :feature do
 
     expect(page).to have_text("TubeGenius Profile")
   end
+
+  scenario "Non-existant user cannot sign in" do
+    visit "/signin"
+    fill_in "user_name", :with => "whoisthis"
+    fill_in "user_password", :with => "password"
+    click_button "Sign In"
+
+    expect(page).to have_button("Sign In")
+  end
+
 end
