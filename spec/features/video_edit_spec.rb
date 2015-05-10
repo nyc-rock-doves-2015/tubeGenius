@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Edit video', :type => :feature do
- let!(:user) { User.create(name: "username", password: 'password', password_confirmation: 'password')}
+ let!(:user) { create(:user) }
+ let!(:video_permission) { create(:video, :user_id => 10) }
 
   scenario "User can edit a video" do
    page.set_rack_session(user_id: user.id)
@@ -33,6 +34,13 @@ RSpec.feature 'Edit video', :type => :feature do
       click_button "Save Changes"
 
       expect(page).to have_selector("input[type=submit][value='Save Changes']")
+  end
+
+  scenario "User cannot edit a video if they do not own it" do
+    page.set_rack_session(user_id: user.id)
+
+    visit video_path(video_permission)
+    expect(page).not_to have_text("Edit Video")
   end
 
 end

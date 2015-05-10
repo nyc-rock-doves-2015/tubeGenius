@@ -1,6 +1,6 @@
 describe("App.getComments", function () {
   it("should return an array length of 2", function() {
-    expect(App.getComments(1).length).toBe(2);
+    expect(App.getComments(3).length).toBe(2);
   });
 });
 

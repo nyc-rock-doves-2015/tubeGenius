@@ -1,6 +1,9 @@
 <h2><%= @video.title %></h2>
-<%= link_to "Delete Video", { action: :destroy, id: @video.id }, method: :delete %>
-<%= link_to "Edit Video", edit_video_path(@video) %>
+
+<% if current_user && current_user.id == @video.user_id %>
+  <%= link_to "Delete Video", { action: :destroy, id: @video.id }, method: :delete %>
+  <%= link_to "Edit Video", edit_video_path(@video) %>
+<% end %>
 
 <p><%= @video.description %></p>
 <p><%= @video.category %></p>
@@ -11,7 +14,9 @@
   <div class="medium-3 columns" id="comments_container"><ul id="com"></ul></div>
 </div>
 <button id="comment_button" data-reveal-id="comment-modal">Add a comment!</button>
-<div id="comment-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"><%= render "comments/form" %></div>
+<div id="comment-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"><%= render "comments/form" %></div><br>
 
-
-<!-- <div id="static_comments_container"> <%# render :template => 'comments/index', locals: {comments: @comments} %></div> -->
+<button id="static_comment_button">View Comments</button>
+<div id="static_comments" style="display: none">
+  <%= render @video.static_comments %>
+</div>

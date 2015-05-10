@@ -32,4 +32,15 @@ RSpec.feature 'User', :type => :feature do
     expect(page).to have_button("Sign In")
   end
 
+
+  scenario "Bad sign up redirects to sign up" do
+    visit "/signup"
+    fill_in "user_name", :with => "test_user"
+    fill_in "user_password", :with => "password"
+    fill_in "user_password_confirmation", :with => "not_password"
+    click_button "Sign Up"
+
+    expect(page).to have_text "Password confirmation"
+  end
+
 end
