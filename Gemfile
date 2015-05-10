@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'foundation-rails'
 
 # heroku deployment
 gem 'rails_12factor', group: :production
@@ -42,6 +43,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'jasmine-rails'
   gem 'faker'
+  gem 'rails_layout'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
