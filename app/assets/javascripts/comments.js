@@ -75,7 +75,7 @@ App.Popcorn.prototype.addComment = function () {
   $('.new_comment').on("submit", function (event) {
     event.preventDefault();
 
-    $('#myModal').foundation('reveal', 'close');
+    $('#comment-modal').foundation('reveal', 'close');
     
     var $target = $(event.target);
     var $text = $target[0][2];
