@@ -36,4 +36,11 @@ RSpec.feature 'Edit video', :type => :feature do
       expect(page).to have_selector("input[type=submit][value='Save Changes']")
   end
 
+  scenario "User cannot edit a video if they do not own it" do
+    page.set_rack_session(user_id: user.id)
+
+    visit video_path(video_permission)
+    expect(page).not_to have_text("Edit Video")
+  end
+
 end
