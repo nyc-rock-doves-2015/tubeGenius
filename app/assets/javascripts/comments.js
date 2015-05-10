@@ -57,10 +57,18 @@ App.Popcorn.prototype.showComments = function () {
     this.video.footnote({
       start: this.comments[x].start_time,
       end: this.comments[x].end_time,
-      text: this.comments[x].content,
+      text: App.formatComment(this.comments[x].start_time, this.comments[x].end_time, this.comments[x].content),
       target: "com"
     });
   }
+}
+
+App.Popcorn.prototype.updateTime = function () {
+  $('#timeclick').on("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    console.log("test");
+  })
 }
 
 App.Popcorn.prototype.addComment = function () {
@@ -95,4 +103,5 @@ $(function () {
 
   video.showComments();
   video.addComment();
+  video.updateTime();
 });
