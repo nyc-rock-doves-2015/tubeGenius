@@ -1,0 +1,16 @@
+<h2><%= @video.title %></h2>
+<%= link_to "Delete Video", { action: :destroy, id: @video.id }, method: :delete %>
+<%= link_to "Edit Video", edit_video_path(@video) %>
+
+<p><%= @video.description %></p>
+<p><%= @video.category %></p>
+<p><%= @video.availability %></p>
+
+<div class="row">
+  <div id="video" style="width: 360px; height: 300px;"></div>
+  <div id="comments_container"><ul id="com"></ul></div>
+</div>
+<button id="comment_button">Add a comment!</button>
+<div id="comment_form"><%= render "comments/form" %></div>
+<div id="static_comments_container"> <%= render :template => 'comments/index', locals: {comments: @comments} %></div>
+
