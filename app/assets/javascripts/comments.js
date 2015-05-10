@@ -14,7 +14,6 @@ App.getComments = function (video_id) {
 
 App.initNewComment = function (popcorn_instance) {
   $('#comment_button').on("click", function (event) {
-    $(".new_comment").toggle();
     $('.new_comment')[0][3].value = Math.floor(popcorn_instance.video.currentTime());
     var end_time = setInterval(function () {
         $('.new_comment')[0][4].value = Math.floor(popcorn_instance.video.currentTime() + 5);
@@ -76,6 +75,8 @@ App.Popcorn.prototype.addComment = function () {
   $('.new_comment').on("submit", function (event) {
     event.preventDefault();
 
+    $('#myModal').foundation('reveal', 'close');
+    
     var $target = $(event.target);
     var $text = $target[0][2];
     var $start = $target[0][3];
@@ -90,7 +91,6 @@ App.Popcorn.prototype.addComment = function () {
       $start.value = ""; 
       $end.value = ""; 
       $text.value = "";
-      $(".new_comment").toggle();
     })
   })
 }

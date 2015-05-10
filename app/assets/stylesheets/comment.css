@@ -15,17 +15,17 @@
 #comments_container {
   position:absolute;
   display:inline-block;
-  height: 300px;
   float:top;
 }
 
 .row {
-  height:300px;
+  height:100%;
+  margin:0;
 }
 
-.new_comment {
+/*.new_comment {
   display:none;
-}
+}*/
 
 #comment_button {
   margin-top:15px;
