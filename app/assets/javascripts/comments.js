@@ -26,6 +26,25 @@ App.initNewComment = function (popcorn_instance) {
   });
 }
 
+App.formatSeconds = function (seconds) {
+  var min = (Math.floor(seconds/60)).toString();
+  var sec; 
+  if(seconds % 60 == 0) {
+    sec = "00";
+  } else if ((seconds % 60) < 10) {
+    sec = "0" + (seconds % 60).toString();
+  } else {
+    sec = (seconds%60).toString();
+  }
+  return min + ":" + sec
+}
+
+App.formatComment = function (start, end, content) {
+  var start = App.formatSeconds(start);
+  var end = App.formatSeconds(end);
+  return "<a href='#' id='timeclick'>" + "@" + start + "-" + end + "</a>" + "<br>" + content
+}
+
 App.Popcorn = function (video_url, video_container, comment_array) {
   var vid_setup = Popcorn.HTMLYouTubeVideoElement(video_container);
   vid_setup.src = video_url + "&controls=2"
