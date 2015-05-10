@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
 
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :destroy]
 
   def show
     @video = Video.find(params[:id])
