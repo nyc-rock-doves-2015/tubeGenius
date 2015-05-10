@@ -1,8 +1,9 @@
 #video {
-  display:inline-block;
-  margin: 0 auto;
-  padding-right:50px;
+  padding-right:15px;
   border-right: 1px solid black;
+  position: relative;
+  width:100%;
+  height:90%;
 }
 
 .comment {
