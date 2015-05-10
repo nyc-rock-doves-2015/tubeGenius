@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Edit video', :type => :feature do
- let!(:user) { User.create(name: "username", password: 'password', password_confirmation: 'password')}
+ let!(:user) { create(:user) }
+ let!(:video_permission) { create(:video, :user_id => 10) }
 
   scenario "User can edit a video" do
    page.set_rack_session(user_id: user.id)
