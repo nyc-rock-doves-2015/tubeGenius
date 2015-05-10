@@ -204,11 +204,8 @@ DEPENDENCIES
   database_cleaner
   factory_girl_rails
   faker
-<<<<<<< HEAD
   foundation-rails
-=======
   gravtastic
->>>>>>> Add gravtastic gem and model integration for gravatars
   jasmine-rails
   jbuilder (~> 2.0)
   jquery-rails
