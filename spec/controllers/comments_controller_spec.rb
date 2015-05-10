@@ -18,7 +18,6 @@ RSpec.describe CommentsController do
       expect(assigns(:comments)).to eq([comment])
   end
 
-
     it "renders the index template" do
       get :index, :video_id => video.id
       expect(response).to render_template("index")
@@ -48,7 +47,6 @@ RSpec.describe CommentsController do
   describe 'DELETE' do
     it "deletes a comment" do
       comment = video.comments.create(content: "yolo")
-
       expect {delete :destroy, {video_id: video.id, id: comment.id}}.to change(Comment, :count).by(-1)
     end
   end
