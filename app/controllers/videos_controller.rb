@@ -21,7 +21,7 @@ class VideosController < ApplicationController
     if @video.update_attributes(video_params)
       redirect_to video_path(@video)
     else
-      render 'edit'
+      redirect_to edit_video_path(@video)
     end
   end
 
