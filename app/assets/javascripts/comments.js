@@ -20,7 +20,7 @@ App.initNewComment = function (popcorn_instance) {
         $('.new_comment')[0][4].value = Math.floor(popcorn_instance.video.currentTime() + 5);
       }, 100);
 
-    $('#comment_end_time').click(function () {
+    $('#comment_end_time').on("focus", function () {
       clearInterval(end_time);
     })
   });
