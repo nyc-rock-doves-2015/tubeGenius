@@ -14,16 +14,34 @@ App.getComments = function (video_id) {
 
 App.initNewComment = function (popcorn_instance) {
   $('#comment_button').on("click", function (event) {
-    $(".new_comment").toggle();
     $('.new_comment')[0][3].value = Math.floor(popcorn_instance.video.currentTime());
     var end_time = setInterval(function () {
         $('.new_comment')[0][4].value = Math.floor(popcorn_instance.video.currentTime() + 5);
       }, 100);
 
-    $('#comment_end_time').click(function () {
+    $('#comment_end_time').on("focus", function () {
       clearInterval(end_time);
     })
   });
+}
+
+App.formatSeconds = function (seconds) {
+  var min = (Math.floor(seconds/60)).toString();
+  var sec; 
+  if(seconds % 60 == 0) {
+    sec = "00";
+  } else if ((seconds % 60) < 10) {
+    sec = "0" + (seconds % 60).toString();
+  } else {
+    sec = (seconds%60).toString();
+  }
+  return min + ":" + sec
+}
+
+App.formatComment = function (start, end, content) {
+  var start = App.formatSeconds(start);
+  var end = App.formatSeconds(end);
+  return "@" + start + "-" + end + "</a>" + "<br>" + content
 }
 
 App.Popcorn = function (video_url, video_container, comment_array) {
@@ -38,10 +56,18 @@ App.Popcorn.prototype.showComments = function () {
     this.video.footnote({
       start: this.comments[x].start_time,
       end: this.comments[x].end_time,
-      text: this.comments[x].content,
+      text: App.formatComment(this.comments[x].start_time, this.comments[x].end_time, this.comments[x].content),
       target: "com"
     });
   }
+}
+
+App.Popcorn.prototype.updateTime = function () {
+  $('#timeclick').on("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    console.log("test");
+  })
 }
 
 App.Popcorn.prototype.addComment = function () {
@@ -49,6 +75,8 @@ App.Popcorn.prototype.addComment = function () {
   $('.new_comment').on("submit", function (event) {
     event.preventDefault();
 
+    $('#comment-modal').foundation('reveal', 'close');
+    
     var $target = $(event.target);
     var $text = $target[0][2];
     var $start = $target[0][3];
@@ -63,7 +91,6 @@ App.Popcorn.prototype.addComment = function () {
       $start.value = ""; 
       $end.value = ""; 
       $text.value = "";
-      $(".new_comment").toggle();
     })
   })
 }
@@ -76,4 +103,5 @@ $(function () {
 
   video.showComments();
   video.addComment();
+  video.updateTime();
 });
