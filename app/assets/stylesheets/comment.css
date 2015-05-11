@@ -1,30 +1,31 @@
 #video {
-  padding-right:15px;
-  border-right: 1px solid black;
   position: relative;
-  width:100%;
+  width:90%;
   height:90%;
 }
 
 .comment {
-  font-size:20px;
-  margin:10px;
+  font-size:15px;
+  margin-bottom:10px;
   padding:10px;
+  border-radius:30px;
   border: 1px solid black;
 }
 
 #comments_container {
   position:absolute;
+  height:100%;
   display:inline-block;
   float:top;
+  overflow-y:auto;
 }
 
 .row {
-  height:100%;
+  height:90%;
   margin:0;
 }
 
 
 #comment_button {
-  margin-top:15px;
+  margin-bottom:15px;
 }
