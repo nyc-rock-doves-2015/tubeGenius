@@ -13,7 +13,9 @@
   <div class="medium-9 columns" id="video"></div>
   <div class="medium-3 columns" id="comments_container"><ul id="com"></ul></div>
 </div>
-<button id="comment_button" data-reveal-id="comment-modal">Add a comment!</button>
+<% if current_user %>
+  <button id="comment_button" data-reveal-id="comment-modal">Add a comment!</button>
+<% end %>
 <div id="comment-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"><%= render "comments/form" %></div><br>
 
 <button id="static_comment_button">View Comments</button>
