@@ -47,15 +47,10 @@ class VideosController < ApplicationController
   def json_url_and_comments(json_arr = [], comment_arr = [])
     video = Video.find(params[:video_id])
     comments = video.comments
+
     json_arr << video.url
+    json_arr << comments.where.not(start_time: nil, end_time: nil).as_json({:include => { :user => { :methods => :gravatar_url }}})
 
-    comments.each do |comment|
-      if comment.start_time != nil
-        comment_arr << comment
-      end
-    end
-
-    json_arr << comment_arr
     render json: json_arr
   end
 
