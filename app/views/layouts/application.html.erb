@@ -39,17 +39,18 @@
             </div>
           </div>
         </li>
-        <li class="active"><a href="<%= signup_path %>">Sign Up</a></li>
-        <li><a href="#" data-reveal-id="myModal" id="buttonForModal">Sign In</a>
+        <li class="active"><a href="#" data-reveal-id="signup-modal" id="buttonForSignUp">Sign Up</a></li>
+        <li><a href="#" data-reveal-id="signin-modal" id="buttonForSignIn">Sign In</a>
         </li>
       </ul>
 
     </section>
   </nav>
-
 </div>
 
-<div id="user-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"><%= render "users/profile" %></div><br>
+<div id="signup-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"><%= render "users/signup" %></div>
+<div id="signin-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"><%= render "sessions/signin" %></div>
+
 
   <%= yield %>
 
