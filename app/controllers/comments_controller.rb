@@ -41,6 +41,7 @@ class CommentsController < ApplicationController
     end
 
     if @comment.save
+      current_user.comments << @comment
       redirect_to root_path
     else
       flash[:notice] = "Sorry, your comment didn't save"
