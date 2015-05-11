@@ -74,7 +74,7 @@ App.Popcorn.prototype.updateTime = function () {
   })
 }
 
-App.Popcorn.prototype.addComment = function (video_id) {
+App.Popcorn.prototype.addComment = function () {
   var self = this;
   var new_comment;
   $('.new_comment').on("submit", function (event) {
@@ -113,6 +113,6 @@ $(function () {
   App.initNewComment(video);
 
   video.showComments();
-  video.addComment(video_id);
+  video.addComment();
   video.updateTime();
 });
