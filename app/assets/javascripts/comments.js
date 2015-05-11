@@ -50,10 +50,10 @@ App.formatSeconds = function (seconds) {
   return min + ":" + sec
 }
 
-App.formatComment = function (start, end, content) {
+App.formatComment = function (start, end, content, user) {
   var start = App.formatSeconds(start);
   var end = App.formatSeconds(end);
-  return "@" + start + "-" + end + "</a>" + "<br>" + content
+  return "@" + start + "-" + end + "</a>" + "<br>" + content + "<br>" + user.name + "<br>" + "<img src='" + user.gravatar_url + "'>"
 }
 
 App.Popcorn = function (video_url, video_container, comment_array) {
@@ -68,7 +68,11 @@ App.Popcorn.prototype.showComments = function () {
     this.video.footnote({
       start: this.comments[x].start_time,
       end: this.comments[x].end_time,
-      text: App.formatComment(this.comments[x].start_time, this.comments[x].end_time, this.comments[x].content),
+      text: App.formatComment(
+        this.comments[x].start_time, 
+        this.comments[x].end_time, 
+        this.comments[x].content,
+        this.comments[x].user),
       target: "com"
     });
   }
