@@ -103,17 +103,19 @@ App.Popcorn.prototype.addComment = function (video_id) {
       url: $target.attr("action"),
       type: 'post',
       data: $target.serialize()
+    }).then(function () {
+      new_comment = App.getLastComment();
     }).done(function (response) {
       self.video.footnote({
         start: parseInt($start.value), 
         end: parseInt($end.value), 
-        text: App.formatComment(parseInt($start.value), parseInt($end.value), $text.value), 
+        text: App.formatComment(parseInt($start.value), parseInt($end.value), $text.value, new_comment.user), 
         target: "com"});
       $start.value = ""; 
       $end.value = ""; 
       $text.value = "";
-    })
-  })
+    });
+  });
 }
 
 $(function () {
