@@ -6,11 +6,11 @@
 
 
   <ul class="inline-list">
-    <li><%= mailbox_section 'inbox', @box %></li>
-    <li><%= mailbox_section 'sent', @box %></li>
-    <li><%= mailbox_section 'trash', @box %></li>
+    <li id="inbox"><%= mailbox_section 'inbox', @box %></li>
+    <li id="sent"><%= mailbox_section 'sent', @box %></li>
+    <li id="trash"><%= mailbox_section 'trash', @box %></li>
   </ul>
-  <ul>
+  <ul id="messages">
     <%= render partial: 'conversations/conversation', collection: @conversations %>
   </ul>
   <%= will_paginate %>
