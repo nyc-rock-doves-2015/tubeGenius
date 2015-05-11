@@ -45,8 +45,13 @@ class CommentsController < ApplicationController
       if request.xhr?
         new_comment = @comment.as_json({:include => { :user => { :methods => :gravatar_url }}})
         render json: new_comment
+      else
+      redirect_to root_path
       end
     else
+      if request.xhr?
+        flash[:notice] = "Sorry, your comment didn't save"
+      end
       flash[:notice] = "Sorry, your comment didn't save"
       render :new
     end
