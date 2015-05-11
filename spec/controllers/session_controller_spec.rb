@@ -17,7 +17,7 @@ RSpec.describe SessionsController do
       expect(response).to redirect_to(user_path(user))
     end
 
-    it "redirects to the sign in on error" do
+    it "does not set session id on error" do
       post :create, user:{name: user.name, password: "not_password"}
       expect(session[:user_id]).to eq(nil)
     end
