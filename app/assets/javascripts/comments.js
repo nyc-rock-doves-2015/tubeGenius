@@ -91,13 +91,11 @@ App.Popcorn.prototype.addComment = function () {
       url: $target.attr("action"),
       type: 'post',
       data: $target.serialize()
-    }).then(function () {
-      new_comment = App.getLastComment();
     }).done(function (response) {
       self.video.footnote({
         start: parseInt($start.value), 
         end: parseInt($end.value), 
-        text: App.formatComment(parseInt($start.value), parseInt($end.value), $text.value, new_comment.user), 
+        text: App.formatComment(parseInt($start.value), parseInt($end.value), $text.value, response.user), 
         target: "com"});
       $start.value = ""; 
       $end.value = ""; 
