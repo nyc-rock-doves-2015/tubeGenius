@@ -1,0 +1,15 @@
+<div id="signup">
+  <%= form_for User.new, html: { class: "form-signin" } do |f| %>
+    <h2>Sign Up</h2>
+    <%= f.label :name, "Username: " %>
+    <%= f.text_field :name %>
+    <%= f.label :email, "Email: " %>
+    <%= f.text_field :email %>
+    <%= f.label :password, "Password: " %>
+    <%= f.password_field :password %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+    <%= f.submit 'Sign Up' %>
+    <%= get_flash %>
+  <% end %>
+</div>
