@@ -28,7 +28,16 @@ RSpec.describe CommentsController do
   describe 'POST create' do
     it "creates a new comment" do
       session[:user_id] = user.id
+
+      expect {
+        post :create, {:video_id => video.id, comment: {content: "yolo4lyfe"}, user_id: user.id}
+        }.to change(Comment,:count).by(1)
+    end
+
+    it "redirects on comment creation" do
+      session[:user_id] = user.id
       post :create, {:video_id => video.id, comment: {content: "yolo4lyfe"}, user_id: user.id}
+
       assert_response :redirect
     end
 
