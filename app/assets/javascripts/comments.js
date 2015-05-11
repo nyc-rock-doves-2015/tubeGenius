@@ -86,8 +86,9 @@ App.Popcorn.prototype.updateTime = function () {
   })
 }
 
-App.Popcorn.prototype.addComment = function () {
+App.Popcorn.prototype.addComment = function (video_id) {
   var self = this;
+  var new_comment;
   $('.new_comment').on("submit", function (event) {
     event.preventDefault();
 
