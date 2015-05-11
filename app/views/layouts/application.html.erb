@@ -30,27 +30,11 @@
       <!-- Right Nav Section -->
       <ul class="right">
         <li class="has-form">
-
           <%= render '/layouts/search' %>
-
-          <div class="row collapse">
-            <div class="large-8 small-9 columns">
-              <input type="text" placeholder="Find Stuff">
-            </div>
-            <div class="large-4 small-3 columns">
-              <a href="#" class="alert button expand">Search</a>
-            </div>
-          </div>
         </li>
+
         <% if current_user %>
           <li><%= link_to 'Your Conversations', conversations_path %></li>
-          <li><%= link_to "Sign Out", signout_path %></li>
-        <% else %>
-        <li class="active"><a href="<%= signup_path %>">Sign Up</a></li>
-        <li><a href="#" data-reveal-id="myModal" id="buttonForModal">Sign In</a>
-          <% end %>
-        </li>
-        <% if current_user %>
           <li><%= link_to image_tag(current_user.gravatar_url size: "25x20"),  user_path(current_user) %></li>
           <li class="active"><%= link_to current_user.name, user_path(current_user) %></li>
           <li><%= link_to "Sign Out", signout_path %>
