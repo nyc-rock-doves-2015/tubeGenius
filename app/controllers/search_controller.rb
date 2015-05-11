@@ -7,7 +7,7 @@ class SearchController < ApplicationController
 
   def search(search)
     if search
-      Video.where('title LIKE?', "%#{search}%") + User.where('name LIKE ?', "%#{search}%") + Comment.where('content LIKE ?', "%#{search}%")
+      Video.where('LOWER(title) LIKE?', "%#{search.downcase}%") + User.where('LOWER(name) LIKE ?', "%#{search.downcase}%") + Comment.where('LOWER(content) LIKE ?', "%#{search.downcase}%")
     else
       render 'search/noresults'
     end
