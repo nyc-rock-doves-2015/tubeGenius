@@ -14,19 +14,19 @@ RSpec.feature 'User', :type => :feature do
   end
 
   scenario "User can sign up" do
-    visit "/signup"
-    fill_in "user_name", :with => "test_user"
-    fill_in "user_password", :with => "password"
-    fill_in "user_password_confirmation", :with => "password"
+    visit root_path
+    fill_in "signup_name", :with => "test_user"
+    fill_in "signup_password", :with => "password"
+    fill_in "signup_password_confirmation", :with => "password"
     click_button "Sign Up"
 
     expect(page).to have_text("TubeGenius Profile")
   end
 
   scenario "Non-existant user cannot sign in" do
-    visit "/signin"
-    fill_in "user_name", :with => "whoisthis"
-    fill_in "user_password", :with => "password"
+    visit root_path
+    fill_in "signin_name", :with => "whoisthis"
+    fill_in "signin_password", :with => "password"
     click_button "Sign In"
 
     expect(page).to have_button("Sign In")
@@ -34,10 +34,10 @@ RSpec.feature 'User', :type => :feature do
 
 
   scenario "Bad sign up redirects to sign up" do
-    visit "/signup"
-    fill_in "user_name", :with => "test_user"
-    fill_in "user_password", :with => "password"
-    fill_in "user_password_confirmation", :with => "not_password"
+    visit root_path
+    fill_in "signup_name", :with => "test_user"
+    fill_in "signup_password", :with => "password"
+    fill_in "signup_password_confirmation", :with => "not_password"
     click_button "Sign Up"
 
     expect(page).to have_text "Password confirmation"
