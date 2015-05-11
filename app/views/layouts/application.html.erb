@@ -32,9 +32,15 @@
         <li class="has-form">
           <%= render '/layouts/search' %>
         </li>
-        <li class="active"><a href="#" data-reveal-id="signup-modal" id="buttonForSignUp">Sign Up</a></li>
-        <li><a href="#" data-reveal-id="signin-modal" id="buttonForSignIn">Sign In</a>
-        </li>
+        <% if current_user %>
+          <li><%= link_to image_tag(current_user.gravatar_url size: "25x20"),  user_path(current_user) %></li>
+          <li class="active"><%= link_to current_user.name, user_path(current_user) %></li>
+          <li><%= link_to "Sign Out", signout_path %>
+        <% else %>
+          <li class="active"><a href="#" data-reveal-id="signup-modal" id="buttonForSignUp">Sign Up</a></li>
+          <li><a href="#" data-reveal-id="signin-modal" id="buttonForSignIn">Sign In</a>
+          </li>
+        <% end %>
       </ul>
 
     </section>
