@@ -3,7 +3,7 @@
   <% @user.comments.each do |comment| %>
     <div>
       <p><%= "#{@user.name} on #{comment.created_at}:" %></p>
-      <p><%= comment.content %> <%= "(#{start_time}-#{end_time})" if comment.start_time %> </p>
+      <p><%= comment.content %> <%= "(#{comment.start_time}-#{comment.end_time})" if comment.start_time %> </p>
     </div>
   <% end %>
 </div>
