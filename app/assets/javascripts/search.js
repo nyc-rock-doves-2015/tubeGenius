@@ -1,6 +1,5 @@
 $(document).ready(function(){
-    $("#search").on('click', function() {
-    console.log("Search")
-    // $("#search_form").submit();
+    $("#search-button").on('click', function() {
+    $("#search_form").submit();
   });
 });
