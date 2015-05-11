@@ -23,7 +23,10 @@ Rails.application.routes.draw do
   get 'signout' => 'sessions#destroy', as: 'signout'
   get 'signup' => 'users#new', as: 'signup'
 
+
   get 'search' => 'search#new', as: 'search'
+
+  get '/auth/google_oauth2/callback' => 'callbacks#index'
 
   root 'welcome#index'
 
