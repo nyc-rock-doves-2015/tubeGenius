@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe CommentsController do
 
   let(:video) { create(:video) }
+  let(:user) { create(:user) }
 
   describe 'GET #new' do
     it "renders the :new view"do
@@ -26,7 +27,8 @@ RSpec.describe CommentsController do
 
   describe 'POST create' do
     it "creates a new comment" do
-      post :create, {:video_id => video.id, comment: {content: "yolo4lyfe"}}
+      session[:user_id] = user.id
+      post :create, {:video_id => video.id, comment: {content: "yolo4lyfe"}, user_id: user.id}
       assert_response :redirect
     end
 
