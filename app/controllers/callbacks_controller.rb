@@ -17,7 +17,6 @@ class CallbacksController < ApplicationController
       session_in!(@new_user)
       redirect_to user_path(@new_user)
     end
-
   end
   
 end
