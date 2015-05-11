@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   include Gravtastic
 
-  gravtastic :default => 'https://d13yacurqjgara.cloudfront.net/users/17619/screenshots/318757/400.png'
+  gravtastic
 
   validates :name, uniqueness: true
 
