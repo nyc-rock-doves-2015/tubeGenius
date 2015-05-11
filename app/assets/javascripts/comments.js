@@ -93,9 +93,9 @@ App.Popcorn.prototype.addComment = function () {
       data: $target.serialize()
     }).done(function (response) {
       self.video.footnote({
-        start: parseInt($start.value), 
-        end: parseInt($end.value), 
-        text: App.formatComment(parseInt($start.value), parseInt($end.value), $text.value, response.user), 
+        start: response.start_time, 
+        end: response.end_time, 
+        text: App.formatComment(parseInt(response.start_time), parseInt(response.end_time), $text.value, response.user), 
         target: "com"});
       $start.value = ""; 
       $end.value = ""; 
