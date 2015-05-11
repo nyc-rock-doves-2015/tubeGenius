@@ -12,6 +12,18 @@ App.getComments = function (video_id) {
   return json_data;
 };
 
+App.getLastComment = function (video_id) {
+  var last_comment_json;
+  $.ajax({
+    async: false,
+    url: '/videos/' + video_id + '/json',
+    type: 'get'
+  }).done(function (response) {
+    last_comment_json = response;
+  });
+  return last_comment_json;
+};
+
 App.initNewComment = function (popcorn_instance) {
   $('#comment_button').on("click", function (event) {
     $('.new_comment')[0][3].value = Math.floor(popcorn_instance.video.currentTime());
