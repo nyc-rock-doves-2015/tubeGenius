@@ -125,6 +125,6 @@ $(function () {
   App.initNewComment(video);
 
   video.showComments();
-  video.addComment();
+  video.addComment(video_id);
   video.updateTime();
 });
