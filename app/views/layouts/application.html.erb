@@ -1,14 +1,57 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>TubeGenius</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <script src="js/foundation/foundation.js"></script>
+    <script src="js/foundation/foundation.topbar.js"></script>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+<div class="fixed">
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="<%= root_path %>">tubeGenius</a></h1>
+      </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li class="has-form">
+          <div class="row collapse">
+            <div class="large-8 small-9 columns">
+              <input type="text" placeholder="Find Stuff">
+            </div>
+            <div class="large-4 small-3 columns">
+              <a href="#" class="alert button expand">Search</a>
+            </div>
+          </div>
+        </li>
+        <li class="active"><a href="<%= signup_path %>">Sign Up</a></li>
+        <li><a href="#" data-reveal-id="myModal" id="buttonForModal">Sign In</a>
+        </li>
+      </ul>
+
+    </section>
+  </nav>
+
+</div>
+
+<div id="user-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"><%= render "users/profile" %></div><br>
+
+  <%= yield %>
+
+  </body>
 </html>

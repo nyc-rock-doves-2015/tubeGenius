@@ -1,0 +1,34 @@
+<%= form_for @video do |f| %>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.text_field :category %>
+  </div>
+
+  <div class="field">
+    <%= f.radio_button :availability, 'Public', :checked => true %>
+    <%= label :availability, 'Public' %>
+    <%= f.radio_button :availability, 'Personal' %>
+    <%= label :availability, 'Personal' %>
+    <%= f.radio_button :availability, 'Group' %>
+    <%= label :availability, 'Group' %>
+  </div>
+
+  <div class="action">
+    <%= f.submit  %>
+  </div>
+<% end %>
