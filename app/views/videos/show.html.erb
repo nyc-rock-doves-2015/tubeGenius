@@ -18,7 +18,9 @@
   <button id="comment_button" data-reveal-id="comment-modal">Add a comment!</button>
 <% end %>
 
-<div id="comment-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"><%= render "comments/form" %></div><br>
+<div id="comment-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <%= render "comments/form" %>
+</div><br>
 
 <% if current_user && @video.availability == "Public" || @video.availability == "Personal" && @video.user_id == current_user.id %>
   <button id="static_comment_button">View Comments</button>
