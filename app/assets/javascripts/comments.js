@@ -123,4 +123,3 @@ App.Popcorn.prototype.addComment = function () {
     });
   });
 }
-
