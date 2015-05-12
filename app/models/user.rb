@@ -12,5 +12,8 @@ class User < ActiveRecord::Base
   has_many :message_users
   has_many :messages, through: :message_users
 
+  def mailboxer_email(object)
+    email
+  end
 
 end
