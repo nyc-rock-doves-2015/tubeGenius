@@ -7,4 +7,10 @@ RSpec.feature 'Comment Availability', :type => :feature do
   let!(:video_permission) { create(:video, :user_id => 10, :availability => "Personal") }
   let!(:video_owner) { create(:video, :user_id => user.id, :availability => "Personal") }
 
+
+  scenario "User cannot add a comment to public a video if not logged in" do
+    visit video_path(video)
+    expect(page).not_to have_text("Add a comment")
+  end
+
 end
