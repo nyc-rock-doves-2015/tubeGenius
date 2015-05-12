@@ -60,6 +60,10 @@
         $('#user-modal').html(response);
       })
 
+      $(document).on('close.fndtn.reveal', '#user-modal', function () {
+        var modal = $(this);
+        video.video.play();
+      });
     });
   });
 </script>
