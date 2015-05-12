@@ -10,6 +10,10 @@ class Comment < ActiveRecord::Base
 
   before_save :format_media
 
+  def editable_by?(user)
+    user == self.user || user == self.video.user
+  end
+
   def format_media
     if self.new_record?
       if self.media_type == "IMAGE"
