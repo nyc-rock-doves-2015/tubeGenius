@@ -29,3 +29,8 @@
 #comment_button {
   margin-bottom:15px;
 }
+
+#modal-video-list {
+  overflow-y:auto;
+  height:300px;
+}
