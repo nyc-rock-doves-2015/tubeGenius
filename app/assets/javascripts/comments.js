@@ -38,11 +38,25 @@ App.formatSeconds = function (seconds) {
   return min + ":" + sec
 }
 
-App.formatComment = function (start, end, content, user) {
-  console.log(content);
+App.formatMediaContent = function (content, type) {
+  var formatted_content;
+  if (type === "image") {
+    formatted_content = "<img src=" + content + "></img>"
+  } else if (type === "video") {
+    youtube_id = content.split("=")[1]
+    formatted_content = "<iframe src='//www.youtube.com/embed/" + youtube_id + "'></iframe>"
+  } else {
+    formatted_content = content
+  }
+  return formatted_content
+}
+
+App.formatComment = function (start, end, content, user, media_type) {
+  var formatted_content = App.formatMediaContent(content, media_type);
+  
   var start = App.formatSeconds(start);
   var end = App.formatSeconds(end);
-  return "@" + start + "-" + end + "<br>" + content + "<br>" + "-" + user.name + "<br>" + "<img src='" + user.gravatar_url + "'>"
+  return "@" + start + "-" + end + "<br>" + formatted_content + "<br>" + "-" + user.name + "<br>" + "<img src='" + user.gravatar_url + "'>"
 }
 
 App.Popcorn = function (video_url, video_container, comment_array) {
