@@ -60,7 +60,6 @@ App.formatComment = function (start, end, content, user, media_type) {
   var start = App.formatSeconds(start);
   var end = App.formatSeconds(end);
   var gravatar = App.formatGravatar(user);
-  console.log(gravatar)
   return "@" + start + "-" + end + "<br>" + formatted_content + "<br>" + "-" + user.name + "<br>" + gravatar
 }
 
@@ -84,14 +83,6 @@ App.Popcorn.prototype.showComments = function () {
       target: "com"
     });
   }
-}
-
-App.Popcorn.prototype.updateTime = function () {
-  $('#timeclick').on("click", function (event) {
-    event.preventDefault();
-    event.stopPropagation();
-    console.log("test");
-  })
 }
 
 App.Popcorn.prototype.addComment = function () {
