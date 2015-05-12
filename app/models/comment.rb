@@ -8,5 +8,17 @@ class Comment < ActiveRecord::Base
 
   validates :content, presence: true
 
+  before_save :format_media
+
+  def format_media
+    if self.new_record?
+      if self.media_type == "IMAGE"
+        self.content = "<img src='#{self.content}'></img>".html_safe
+      elsif self.media_type == "VIDEO"
+        youtube_id = self.content.split("=").last
+        self.content = "<iframe src='//www.youtube.com/embed/#{youtube_id}'></iframe>"
+      end
+    end
+  end
 
 end
