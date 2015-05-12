@@ -53,7 +53,6 @@ App.formatMediaContent = function (content, type) {
 
 App.formatComment = function (start, end, content, user, media_type) {
   var formatted_content = App.formatMediaContent(content, media_type);
-  
   var start = App.formatSeconds(start);
   var end = App.formatSeconds(end);
   return "@" + start + "-" + end + "<br>" + formatted_content + "<br>" + "-" + user.name + "<br>" + "<img src='" + user.gravatar_url + "'>"
