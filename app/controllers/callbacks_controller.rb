@@ -1,8 +1,8 @@
 class CallbacksController < ApplicationController
  
-  def new
+  # def new
 
-  end
+  # end
 
   def index
     user_info_hash = request.env['omniauth.auth']['info']
