@@ -29,11 +29,10 @@
 
       <section class="top-bar-section">
         <ul class="right">
-          <li class="has-form">
-            <%= render '/layouts/search' %>
-          </li>
-
           <% if current_user %>
+            <li class="has-form">
+              <%= render '/layouts/search' %>
+            </li>
             <% if unread_messages > 0 %>
               <li>
                 <%= link_to image_tag("full_message_box.png", size: "25x20"), conversations_path %>
