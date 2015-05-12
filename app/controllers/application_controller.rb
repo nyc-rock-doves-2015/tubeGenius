@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  helper_method :unread_messages
+
+  def unread_messages
+    current_user.mailbox.inbox({:read => false}).count if current_user
+  end
 
   def set_flash(msg)
     flash[:notice] = msg
