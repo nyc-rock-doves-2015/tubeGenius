@@ -1,0 +1,50 @@
+<h2><%= @video.title %></h2>
+<% if current_user && current_user.id == @video.user_id %>
+ <button id="owner_button" data-reveal-id="owner-modal">Owner Page</button>
+<% end %>
+
+<div id="owner-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <%= render "videos/ownershow" %>
+</div><br>
+
+<% if current_user && current_user.id == @video.user_id %>
+  <%= link_to "Delete Video", { action: :destroy, id: @video.id }, method: :delete %>
+  <%= link_to "Edit Video", edit_video_path(@video) %>
+<% end %>
+
+<p><%= @video.description %></p>
+<p><%= @video.category %></p>
+<p><%= @video.availability %></p>
+
+<div class="row">
+  <div class="medium-9 columns" id="video"></div>
+  <div class="medium-3 columns" id="comments_container"><ul id="com"></ul></div>
+</div>
+
+<% if current_user && @video.availability == "Public" || @video.availability == "Personal" && @video.user_id == current_user.id %>
+  <button id="comment_button" data-reveal-id="comment-modal">Add a comment!</button>
+<% end %>
+
+<div id="comment-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <%= render "comments/form" %>
+</div><br>
+
+<% if current_user && @video.availability == "Public" || @video.availability == "Personal" && @video.user_id == current_user.id %>
+  <button id="static_comment_button">View Comments</button>
+  <div id="static_comments" style="display: none">
+    <%= render @video.static_comments %>
+  </div>
+<% end %>
+
+<script>
+  $(function () {
+    var video_id = parseInt(window.location.href.match(/\d+$/));
+    var results = App.getComments(video_id);
+    var video = new App.Popcorn(results[0], "#video", results[1]);
+
+    App.initNewComment(video);
+    video.showComments();
+    video.addComment();
+    video.updateTime();
+  })
+</script>
