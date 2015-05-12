@@ -56,3 +56,14 @@ body {
 ul {
   list-style: none;
 }
+
+ul.breadcrumbs li:before {
+  content: "|";
+}
+
+ul.breadcrumbs{
+  background-color: white;
+  border-radius: 5px;
+}
+
+}
