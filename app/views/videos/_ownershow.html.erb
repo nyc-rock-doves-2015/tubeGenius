@@ -1,0 +1,12 @@
+<h2>Comments on <%= @video.title %></h2>
+<div class="comment_container_owner">
+  <% @video.comments.all.each do |comment| %>
+  <div class="individual_comment_container_owner" id="<%= @video.id %>">
+      <%= link_to image_tag(comment.user.gravatar_url size: "25x20"),  user_path(comment.user) %>
+      <%= comment.content %>
+      <%= comment.user.name %>
+      <%= comment.start_time %> - <%= comment.end_time %>
+      <a href="#" class="comment_deletion" id="<%= comment.id %>">Delete</a>
+    </div>
+  <% end %>
+</div>

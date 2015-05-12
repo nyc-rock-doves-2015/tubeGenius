@@ -1,0 +1,16 @@
+<% if flash[:notice] %>
+  <div class="flash">
+    <%= get_flash %>
+  </div>
+<% end %>
+
+<div id="signin">
+  <%= form_for User.new, url: session_path, html: { class: "form-signin" } do |f| %>
+    <h2>Sign In</h2>
+    <%= f.label :name, "Username: " %>
+    <%= f.text_field :name, id: "signin_name" %>
+    <%= f.label :password, "Password: " %>
+    <%= f.password_field :password, id: "signin_password" %>
+    <%= f.submit 'Sign In' %>
+  <% end %>
+</div>

@@ -1,0 +1,17 @@
+<% if @user != nil %>
+  <h2><%= @user.name %>'s TubeGenius Profile</h2>
+  <a href="#" data-reveal-id="user-modal"><%= image_tag @user.gravatar_url %></a>
+  <div class="user_page">
+    <h3>Videos</h3>
+    <% @user.videos.each do |video| %>
+      <div>
+        <h4><%= link_to video.title, video_path(video) %></h4><ul>
+        <p>Category: <%= video.category %></p>
+        <p>Description: <%= video.description %></p>
+        <p>Comments: <%= video.comments.count %></p>
+        </ul>
+      </div>
+    <%end %>
+  </div>
+<% end %>
+

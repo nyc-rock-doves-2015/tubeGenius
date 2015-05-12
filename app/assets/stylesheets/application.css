@@ -20,6 +20,11 @@
   margin:0px;
  }
 
+ .columns, .medium-9, .medium-3 {
+  margin:0px;
+  padding:0px;
+ }
+
 .embed-container {
   position: relative;
   padding-bottom: 56.25%;
@@ -41,5 +46,5 @@
 }
 
 body {
-  background: #808080;
+  background: #F5F5F5;
 }

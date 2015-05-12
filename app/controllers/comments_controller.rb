@@ -6,8 +6,8 @@ class CommentsController < ApplicationController
       @comment = Comment.find(params[:parent_id])
       @subcomment = @comment.comments.new
     else
-     @video = Video.find(params[:video_id])
-     @comment = @video.comments.new
+      @video = Video.find(params[:video_id])
+      @comment = @video.comments.new
     end
   end
 
@@ -41,8 +41,17 @@ class CommentsController < ApplicationController
     end
 
     if @comment.save
+      current_user.comments << @comment
+      if request.xhr?
+        new_comment = @comment.as_json({:include => { :user => { :methods => :gravatar_url }}})
+        render json: new_comment
+      else
       redirect_to root_path
+      end
     else
+      if request.xhr?
+        flash[:notice] = "Sorry, your comment didn't save"
+      end
       flash[:notice] = "Sorry, your comment didn't save"
       render :new
     end
@@ -58,8 +67,7 @@ class CommentsController < ApplicationController
     if current_user == comment.user || current_user == video.user
       comment.destroy
     end
-
-    redirect_to root_path
+    render text: "ok"
   end
 
   private
