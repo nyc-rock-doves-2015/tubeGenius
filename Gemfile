@@ -24,6 +24,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'mailboxer', github: 'lacco/mailboxer'
+gem 'will_paginate', '~> 3.0.6'
+gem 'chosen-rails'
+gem 'jquery-turbolinks'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

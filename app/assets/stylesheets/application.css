@@ -48,3 +48,7 @@
 body {
   background: #F5F5F5;
 }
+
+ul {
+  list-style: none;
+}

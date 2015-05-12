@@ -8,6 +8,14 @@ Rails.application.routes.draw do
   end
   resource :session, :only => [:new, :create, :destroy]
   resources :users, :except => [:destroy]
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :reply
+      post :restore
+      post :mark_as_read
+    end
+  end
+  resources :messages, only: [:new, :create]
 
   get '/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
 
