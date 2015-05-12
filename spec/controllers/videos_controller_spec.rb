@@ -7,7 +7,7 @@ RSpec.describe VideosController do
   context "visitors" do
     it "redirects to signin path when trying to access new video" do
       get :new
-      expect(response).to redirect_to(signin_path)
+      expect(response).to redirect_to(root_path)
     end
   end
 
