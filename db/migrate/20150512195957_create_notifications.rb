@@ -5,7 +5,7 @@ class CreateNotifications < ActiveRecord::Migration
       t.references :commentable
       t.string :commentable_type
       t.references :comment
-      t.references :notifiable, polymorphic: true, index: true
+      # t.references :notifiable, polymorphic: true, index: true
       t.boolean :read
       t.timestamps
     end
