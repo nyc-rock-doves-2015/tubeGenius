@@ -1,0 +1,28 @@
+<div class="message_box">
+  <% page_header "Conversation" %><br>
+  <h3><%= @conversation.subject %></h3>
+
+  <div class="large-6 columns">
+    <% @conversation.receipts_for(current_user).each do |receipt| %>
+      <div class="row">
+        <% message = receipt.message %>
+        <div class="large-2 columns small-3"><img src="<%= message.sender.gravatar_url %>"/></div>
+          <div class="large-10 columns">
+            <p><strong><%= message.sender.name %> at <%= message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></strong> <%= message.body %></p>
+          </div>
+        </div>
+    <% end %>
+
+    <%= form_tag reply_conversation_path(@conversation), method: :post do %>
+      <div class="form-group">
+        <%= text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true %>
+      </div>
+      <%= submit_tag "Send Message", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+  <aside class="large-3 columns hide-for-small">
+    <p>Chatting with:</p>
+    <p><%= render 'conversations/participants', conversation: @conversation %><p>
+  </aside>
+</div>
+
