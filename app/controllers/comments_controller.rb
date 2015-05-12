@@ -67,8 +67,7 @@ class CommentsController < ApplicationController
     if current_user == comment.user || current_user == video.user
       comment.destroy
     end
-
-    redirect_to root_path
+    render text: "ok"
   end
 
   private
