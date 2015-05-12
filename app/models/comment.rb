@@ -13,7 +13,7 @@ class Comment < ActiveRecord::Base
   def format_media
     if self.new_record?
       if self.media_type == "IMAGE"
-        self.content = "<img src='#{self.content}'></img>"
+        self.content = "<img src='#{self.content}' style='height:100px;width:100px;></img>"
       elsif self.media_type == "VIDEO"
         youtube_id = self.content.split("=").last
         self.content = "<iframe src='//www.youtube.com/embed/#{youtube_id}'></iframe>"
