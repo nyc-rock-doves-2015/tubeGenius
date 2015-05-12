@@ -12,9 +12,9 @@ RSpec.describe SessionsController do
 
   describe 'POST #create' do
 
-    it "redirects to the user's :show page" do
+    it "redirects to the video index" do
       post :create, user:{name: user.name, password: user.password}
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(videos_path)
     end
 
     it "does not set session id on error" do
