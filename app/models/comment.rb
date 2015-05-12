@@ -2,13 +2,16 @@ class Comment < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :video
-
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable
 
   validates :content, presence: true
 
   before_save :format_media
+
+  def editable_by?(user)
+    user == self.user || user == self.video.user
+  end
 
   def format_media
     if self.new_record?

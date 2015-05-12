@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(name: params[:user][:name])
-    if @user && @user.authenticate(params[:user][:password])
-      session_in!(@user)
+    user = User.find_by(name: params[:user][:name])
+    if user && user.authenticate(params[:user][:password])
+      session_in!(user)
       redirect_to root_path
     else
       set_flash("Bad login information")
