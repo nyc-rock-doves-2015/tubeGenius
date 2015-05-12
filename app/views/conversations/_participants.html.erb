@@ -1,5 +1,5 @@
 <% conversation.participants.each do |participant| %>
   <% unless participant == current_user %>
-    <%= image_tag participant.gravatar_url %> <%= participant.name %>
+    <%= image_tag participant.gravatar_url %> <%= participant.name %><br>
   <% end %>
 <% end %>
