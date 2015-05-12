@@ -3,6 +3,6 @@ FactoryGirl.define do
     title Faker::Name.title
     description Faker::Lorem.paragraph
     url Faker::Internet.url
-    category "Public"
+    availability "Public"
   end
 end

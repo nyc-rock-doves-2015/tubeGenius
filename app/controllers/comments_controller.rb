@@ -6,8 +6,8 @@ class CommentsController < ApplicationController
       @comment = Comment.find(params[:parent_id])
       @subcomment = @comment.comments.new
     else
-     @video = Video.find(params[:video_id])
-     @comment = @video.comments.new
+      @video = Video.find(params[:video_id])
+      @comment = @video.comments.new
     end
   end
 
