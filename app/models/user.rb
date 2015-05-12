@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   gravtastic
 
   validates :name, uniqueness: true
-
+  
   has_many :videos
   has_many :comments
   has_many :message_users

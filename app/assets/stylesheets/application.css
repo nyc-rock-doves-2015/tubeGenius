@@ -49,6 +49,9 @@ body {
   background: #F5F5F5;
 }
 
+.icon {
+  display: inline-block;
+}
 ul {
   list-style: none;
 }
