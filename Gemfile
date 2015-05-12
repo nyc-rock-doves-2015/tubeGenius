@@ -30,8 +30,11 @@ gem 'will_paginate', '~> 3.0.6'
 gem 'chosen-rails'
 gem 'jquery-turbolinks'
 
-# User omniauth for google signin
+# User omniauth for google and facebook signin
+gem 'omniauth'
+
 gem "omniauth-google-oauth2"
+gem 'omniauth-facebook'
 
 
 # Use Unicorn as the app server
