@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    session[:user_id] ? User.find(session[:user_id]) : nil
+    User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
   def session_in!(user)
