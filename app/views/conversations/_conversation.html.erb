@@ -13,8 +13,11 @@
     <% end %>
   </div>
 
-  <p><%= render 'conversations/participants', conversation: conversation %></p>
+  <p>
+    <%= render 'conversations/participants', conversation: conversation %>
+  </p>
 
   <p><%= conversation.last_message.body %>
-    <small>(<span><%= conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></span>)</small></p>
+    <small>(<span><%= conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></span>)</small>
+  </p>
 </li>
