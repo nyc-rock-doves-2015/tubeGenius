@@ -12,4 +12,14 @@
     <%= f.submit 'Sign Up' %>
     <%= get_flash %>
   <% end %>
+
+  <br>
+  <div class='icon'>
+    <%= link_to image_tag("google_button.jpeg", border: 0), auth_google_oauth2_path %>
+  </div>
+
+  <div class='icon'>
+    <%= link_to image_tag("Facebook-icon.png", border: 0), auth_facebook_path %>
+  </div>
+  
 </div>
