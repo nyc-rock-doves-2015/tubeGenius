@@ -64,9 +64,7 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find(params[:id])
-    if current_user == comment.user || current_user == video.user
-      comment.destroy
-    end
+    comment.destroy if comment.editable_by?(current_user)
     render text: "ok"
   end
 
