@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require chosen
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
@@ -47,4 +48,25 @@
 
 body {
   background: #F5F5F5;
+}
+
+.icon {
+  display: inline-block;
+}
+ul {
+  list-style: none;
+}
+
+ul.breadcrumbs li:before {
+  content: "|";
+}
+
+ul.breadcrumbs{
+  background-color: white;
+  border-radius: 5px;
+}
+
+li.message_items{
+  background-color: white;
+  border-radius: 5px;
 }

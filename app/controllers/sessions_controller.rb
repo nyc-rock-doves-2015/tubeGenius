@@ -5,10 +5,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(name: params[:user][:name])
-    if @user && @user.authenticate(params[:user][:password])
-      session_in!(@user)
-      redirect_to user_path(@user.id)
+    user = User.find_by(name: params[:user][:name])
+    if user && user.authenticate(params[:user][:password])
+      session_in!(user)
+      redirect_to videos_path
     else
       set_flash("Bad login information")
       redirect_to new_session_path
@@ -17,6 +17,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session_out!
-    redirect_to new_user_path
+    redirect_to root_path
   end
 end

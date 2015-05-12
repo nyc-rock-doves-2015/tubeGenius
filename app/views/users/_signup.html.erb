@@ -9,7 +9,21 @@
     <%= f.password_field :password, id: "signup_password" %>
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, id: "signup_password_confirmation" %>
-    <%= f.submit 'Sign Up' %>
+    <ul class="button-group">
+      <li>
+        <button class="small button" name="commit" type="submit">Sign Up</button>
+      </li>
+    </ul>
     <%= get_flash %>
   <% end %>
+
+  <br>
+  <div class='icon'>
+    <%= link_to image_tag("google_button.jpeg", border: 0), auth_google_oauth2_path %>
+  </div>
+
+  <div class='icon'>
+    <%= link_to image_tag("Facebook-icon.png", border: 0), auth_facebook_path %>
+  </div>
+  
 </div>

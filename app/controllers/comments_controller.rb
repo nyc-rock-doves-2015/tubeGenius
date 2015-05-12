@@ -42,11 +42,12 @@ class CommentsController < ApplicationController
 
     if @comment.save
       current_user.comments << @comment
+
       if request.xhr?
         new_comment = @comment.as_json({:include => { :user => { :methods => :gravatar_url }}})
         render json: new_comment
       else
-      redirect_to root_path
+        redirect_to video_path(video)
       end
     else
       if request.xhr?
@@ -64,9 +65,7 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find(params[:id])
-    if current_user == comment.user || current_user == video.user
-      comment.destroy
-    end
+    comment.destroy if comment.editable_by?(current_user)
     render text: "ok"
   end
 
@@ -74,9 +73,7 @@ class CommentsController < ApplicationController
 
   def find_commentable
     params.each do |name, value|
-      if name =~ /(.+)_id$/
-        return $1.classify.constantize.find(value)
-      end
+      return $1.classify.constantize.find(value) if name =~ /(.+)_id$/
     end
     nil
   end

@@ -3,55 +3,76 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+  
+    <title>tubeGenius</title>
 
     <%= stylesheet_link_tag    "application" %>
+    <link rel="stylesheet" type="text/css" href="welcome.css">
+    <link href='http://fonts.googleapis.com/css?family=Londrina+Outline' rel='stylesheet' type='text/css'>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <script src="js/foundation/foundation.js"></script>
     <script src="js/foundation/foundation.topbar.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+<body>
 
-<div class="fixed">
-  <nav class="top-bar" data-topbar role="navigation">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="<%= root_path %>">tubeGenius</a></h1>
-      </li>
-       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-    </ul>
-
-    <section class="top-bar-section">
-      <!-- Right Nav Section -->
-      <ul class="right">
-        <li class="has-form">
-          <%= render '/layouts/search' %>
+  <div class="fixed">
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="<%= root_path %>">tubeGenius</a></h1>
         </li>
-        <% if current_user %>
-          <li><%= link_to image_tag(current_user.gravatar_url size: "25x20"),  user_path(current_user) %></li>
-          <li class="active"><%= link_to current_user.name, user_path(current_user) %></li>
-          <li><%= link_to "Sign Out", signout_path %>
-        <% else %>
-          <li class="active"><a href="#" data-reveal-id="signup-modal" id="buttonForSignUp">Sign Up</a></li>
-          <li><a href="#" data-reveal-id="signin-modal" id="buttonForSignIn">Sign In</a>
-          </li>
-        <% end %>
       </ul>
 
-    </section>
-  </nav>
-</div>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class="has-form">
+            <%= render '/layouts/search' %>
+          </li>
+          <% if current_user %>
+            <% if unread_messages > 0 %>
+              <li>
+                <%= link_to image_tag("full_message_box.png", size: "25x20"), conversations_path %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to image_tag("empty_message_box.png", size: "25x20"), conversations_path %>
+              </li>
+            <% end %>
 
-<div id="signup-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"><%= render "users/signup" %></div>
-<div id="signin-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"><%= render "sessions/signin" %></div>
+            <li>
+              <%= link_to image_tag(current_user.gravatar_url size: "25x20"),  user_path(current_user) %>
+            </li>
+            <li class="active">
+              <%= link_to current_user.name, user_path(current_user) %>
+            </li>
+            <li>
+              <%= link_to "Sign Out", signout_path %>
+            </li>
+          <% else %>
+            <li class="active">
+              <a href="#" data-reveal-id="signup-modal" id="buttonForSignUp">Sign Up</a>
+            </li>
+            <li>
+              <a href="#" data-reveal-id="signin-modal" id="buttonForSignIn">Sign In</a>
+            </li>
+          <% end %>
+        </ul>
+      </section>
+    </nav>
+  </div>
 
+  <div id="signup-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"><%= render "users/signup" %></div>
+
+  <div id="signin-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"><%= render "sessions/signin" %></div>
+
+  <div id="user-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"></div>
 
   <%= yield %>
 
-  </body>
+</body>
+
 </html>
