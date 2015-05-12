@@ -1,4 +1,11 @@
 <h2><%= @video.title %></h2>
+<% if current_user && current_user.id == @video.user_id %>
+ <button id="owner_button" data-reveal-id="owner-modal">Owner Page</button>
+<% end %>
+
+<div id="owner-modal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <%= render "videos/ownershow" %>
+</div><br>
 
 <% if current_user && current_user.id == @video.user_id %>
   <%= link_to "Delete Video", { action: :destroy, id: @video.id }, method: :delete %>
