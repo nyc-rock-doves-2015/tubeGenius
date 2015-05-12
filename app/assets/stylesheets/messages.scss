@@ -13,5 +13,15 @@
 .message_box {
   width: 75%;
   margin: auto;
-  padding-top: 50px;
+  background-color: #D3D3D3
+}
+
+.chatting_with {
+  padding: 25px;
+  display: inline-block;
+}
+
+.messages {
+  padding: 25px;
+  border-bottom: 1px solid black;
 }
