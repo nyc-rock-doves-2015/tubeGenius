@@ -38,10 +38,24 @@ App.formatSeconds = function (seconds) {
   return min + ":" + sec
 }
 
-App.formatComment = function (start, end, content, user) {
+App.formatMediaContent = function (content, type) {
+  var formatted_content;
+  if (type === "image") {
+    formatted_content = "<img src=" + content + " style='height:100px;width:100px;'></img>"
+  } else if (type === "video") {
+    youtube_id = content.split("=")[1]
+    formatted_content = "<iframe src='//www.youtube.com/embed/" + youtube_id + "'></iframe>"
+  } else {
+    formatted_content = content
+  }
+  return formatted_content
+}
+
+App.formatComment = function (start, end, content, user, media_type) {
+  var formatted_content = App.formatMediaContent(content, media_type);
   var start = App.formatSeconds(start);
   var end = App.formatSeconds(end);
-  return "@" + start + "-" + end + "</a>" + "<br>" + content + "<br>" + "-" + user.name + "<br>" + "<img src='" + user.gravatar_url + "'>"
+  return "@" + start + "-" + end + "<br>" + formatted_content + "<br>" + "-" + user.name + "<br>" + "<img src='" + user.gravatar_url + "'>"
 }
 
 App.Popcorn = function (video_url, video_container, comment_array) {
@@ -86,6 +100,15 @@ App.Popcorn.prototype.addComment = function () {
     var $text = $target[0][2];
     var $start = $target[0][3];
     var $end = $target[0][4];
+    var media_type;
+
+    if ($target[0][5].checked == true) {
+      media_type = "text"
+    } else if ($target[0][6].checked == true) {
+      media_type = "video"
+    } else if ($target[0][7].checked == true) {
+      media_type = "image"
+    }
 
     $.ajax({
       url: $target.attr("action"),
@@ -95,7 +118,7 @@ App.Popcorn.prototype.addComment = function () {
       self.video.footnote({
         start: response.start_time, 
         end: response.end_time, 
-        text: App.formatComment(parseInt(response.start_time), parseInt(response.end_time), $text.value, response.user), 
+        text: App.formatComment(parseInt(response.start_time), parseInt(response.end_time), $text.value, response.user, media_type), 
         target: "com"});
       $start.value = ""; 
       $end.value = ""; 
