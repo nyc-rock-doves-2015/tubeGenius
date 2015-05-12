@@ -26,8 +26,11 @@ Rails.application.routes.draw do
 
   get 'search' => 'search#new', as: 'search'
 
-  get '/auth/google_oauth2/' => 'callbacks#new'
+  get '/auth/google_oauth2' => 'callbacks#new'
   get '/auth/google_oauth2/callback' => 'callbacks#index'
+
+  get '/auth/facebook' => 'callbacks#new'
+  get '/auth/facebook/callback' => 'callbacks#index'
 
   root 'welcome#index'
 
