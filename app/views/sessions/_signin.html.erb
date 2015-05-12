@@ -11,7 +11,11 @@
     <%= f.text_field :name, id: "signin_name" %>
     <%= f.label :password, "Password: " %>
     <%= f.password_field :password, id: "signin_password" %>
-    <%= f.submit 'Sign In' %>
+    <ul class="button-group">
+      <li>
+        <button class="small button" name="commit" type="submit">Sign In</button>
+      </li>
+    </ul>
   <% end %>
 
   <br>
