@@ -19,5 +19,11 @@ RSpec.feature 'Comment Availability', :type => :feature do
     expect(page).not_to have_text("Add a comment")
   end
 
+  scenario "User can add a comment to public a video if logged in" do
+    page.set_rack_session(user_id: user.id)
+
+    visit video_path(video)
+    expect(page).to have_text("Add a comment")
+  end
 
 end
