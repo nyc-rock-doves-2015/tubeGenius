@@ -1,12 +1,13 @@
 class User < ActiveRecord::Base
   has_secure_password
   acts_as_messageable
+  has_many :notifications
 
   include Gravtastic
   gravtastic
 
   validates :name, uniqueness: true
-  
+
   has_many :videos
   has_many :comments
   has_many :message_users
