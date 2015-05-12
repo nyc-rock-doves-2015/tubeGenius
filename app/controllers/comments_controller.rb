@@ -46,7 +46,7 @@ class CommentsController < ApplicationController
         new_comment = @comment.as_json({:include => { :user => { :methods => :gravatar_url }}})
         render json: new_comment
       else
-      redirect_to root_path
+        redirect_to video_path(video)
       end
     else
       if request.xhr?
