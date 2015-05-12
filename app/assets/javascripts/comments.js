@@ -51,11 +51,17 @@ App.formatMediaContent = function (content, type) {
   return formatted_content
 }
 
+App.formatGravatar = function (user) {
+  return "<a href='/users/" + user.id.toString() + "'>" + "<img src='" + user.gravatar_url + "'>" + "</a>"
+}
+
 App.formatComment = function (start, end, content, user, media_type) {
   var formatted_content = App.formatMediaContent(content, media_type);
   var start = App.formatSeconds(start);
   var end = App.formatSeconds(end);
-  return "@" + start + "-" + end + "<br>" + formatted_content + "<br>" + "-" + user.name + "<br>" + "<img src='" + user.gravatar_url + "'>"
+  var gravatar = App.formatGravatar(user);
+  console.log(gravatar)
+  return "@" + start + "-" + end + "<br>" + formatted_content + "<br>" + "-" + user.name + "<br>" + gravatar
 }
 
 App.Popcorn = function (video_url, video_container, comment_array) {
