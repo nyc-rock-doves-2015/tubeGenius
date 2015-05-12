@@ -29,17 +29,15 @@ class Comment < ActiveRecord::Base
 private
 
   def create_notification
-    if self.commentable_type == "Video"
-    @video = Video.find_by(id: self.commentable_id)
-    @user = User.find_by(id: @video.user_id)
+    @parent = self.commentable
+    @user = User.find_by(id: @parent.user_id)
       Notification.create(
        commentable_id: self.commentable.id,
-       commentable_type: "Video",
+       commentable_type: self.commentable_type,
        user_id: @user.id,
        comment_id: self.id,
        read: false
       )
-    end
   end
 
 end
