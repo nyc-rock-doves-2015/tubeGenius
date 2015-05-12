@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:user][:name])
     if user && user.authenticate(params[:user][:password])
       session_in!(user)
-      redirect_to root_path
+      redirect_to videos_path
     else
       set_flash("Bad login information")
       redirect_to new_session_path
