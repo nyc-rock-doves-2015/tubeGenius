@@ -1,8 +1,13 @@
-<br><br>
-<div class="embed-container">
-  <%= embed(Video.last.url) unless Video.count == 0%>
-</div>
+<html>
+  <div id="bg">
+    <%= image_tag("static.gif") %>
+  </div>  
 
-<script>
-  $(document).foundation("reflow");
-</script>
+  <div id="text">
+    <p id="splash-text">tubeGenius</p>
+  </div>
+
+  <script>
+    $(document).foundation("reflow");
+  </script>
+</html>
