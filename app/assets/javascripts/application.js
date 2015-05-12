@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require chosen-jquery
+//= require messages
 //= require jquery_ujs
 //= require foundation
 //= require_tree .
