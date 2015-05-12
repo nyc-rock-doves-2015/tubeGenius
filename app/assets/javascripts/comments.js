@@ -100,6 +100,15 @@ App.Popcorn.prototype.addComment = function () {
     var $text = $target[0][2];
     var $start = $target[0][3];
     var $end = $target[0][4];
+    var media_type;
+
+    if ($target[0][5].checked == true) {
+      media_type = "text"
+    } else if ($target[0][6].checked == true) {
+      media_type = "video"
+    } else if ($target[0][7].checked == true) {
+      media_type = "image"
+    }
 
     $.ajax({
       url: $target.attr("action"),
@@ -109,7 +118,7 @@ App.Popcorn.prototype.addComment = function () {
       self.video.footnote({
         start: response.start_time, 
         end: response.end_time, 
-        text: App.formatComment(parseInt(response.start_time), parseInt(response.end_time), $text.value, response.user), 
+        text: App.formatComment(parseInt(response.start_time), parseInt(response.end_time), $text.value, response.user, media_type), 
         target: "com"});
       $start.value = ""; 
       $end.value = ""; 
