@@ -8,7 +8,7 @@ RSpec.feature 'Messaging', :type => :feature do
    page.set_rack_session(user_id: user.id)
 
    visit conversations_path
-     click_link "Start conversation"
+     click_link "Start a conversation"
      fill_in "message[subject]", :with => "test subject"
      fill_in "message[body]", :with => "test test body"
      # select "admin", :from => 'recipients'
@@ -21,7 +21,7 @@ RSpec.feature 'Messaging', :type => :feature do
    page.set_rack_session(user_id: user.id)
 
    visit conversations_path
-     expect(page).to have_text('Start conversation')
+     expect(page).to have_text('Start a conversation')
   end
 
 
