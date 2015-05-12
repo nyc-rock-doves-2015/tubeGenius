@@ -1,0 +1,27 @@
+<h1>Conversations</h1>
+<% page_header "Your Conversations" %>
+<p><%= link_to 'Start conversation', new_message_path, class: 'btn btn-lg btn-primary' %></p>
+
+<div class="row" style="height 10%">
+
+
+  <ul class="inline-list">
+    <li id="inbox"><%= mailbox_section 'inbox', @box %></li>
+    <li id="sent"><%= mailbox_section 'sent', @box %></li>
+    <li id="trash"><%= mailbox_section 'trash', @box %></li>
+  </ul>
+  <ul id="messages">
+    <%= render partial: 'conversations/conversation', collection: @conversations %>
+  </ul>
+  <%= will_paginate %>
+
+</div>
+
+<div id="render-messages" class="large-9 push-3 columns">
+
+</div>
+<!-- ----------------------------------------------------------------- -->
+
+
+
+
