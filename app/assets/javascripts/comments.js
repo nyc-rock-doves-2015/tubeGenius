@@ -39,9 +39,10 @@ App.formatSeconds = function (seconds) {
 }
 
 App.formatComment = function (start, end, content, user) {
+  console.log(content);
   var start = App.formatSeconds(start);
   var end = App.formatSeconds(end);
-  return "@" + start + "-" + end + "</a>" + "<br>" + content + "<br>" + "-" + user.name + "<br>" + "<img src='" + user.gravatar_url + "'>"
+  return "@" + start + "-" + end + "<br>" + content + "<br>" + "-" + user.name + "<br>" + "<img src='" + user.gravatar_url + "'>"
 }
 
 App.Popcorn = function (video_url, video_container, comment_array) {
