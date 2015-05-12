@@ -14,7 +14,7 @@ RSpec.describe SessionsController do
 
     it "redirects to the user's :show page" do
       post :create, user:{name: user.name, password: user.password}
-      expect(response).to redirect_to(user_path(user))
+      expect(response).to redirect_to(root_path)
     end
 
     it "does not set session id on error" do
@@ -31,7 +31,7 @@ RSpec.describe SessionsController do
   describe 'DELETE #destroy' do
     it "redirects to new_user_path" do
       delete :destroy
-      expect(response).to redirect_to(new_user_path)
+      expect(response).to redirect_to(root_path)
     end
 
     it "sets the user_id of session to nil" do
