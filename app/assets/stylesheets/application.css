@@ -66,4 +66,7 @@ ul.breadcrumbs{
   border-radius: 5px;
 }
 
+li.message_items{
+  background-color: white;
+  border-radius: 5px;
 }
