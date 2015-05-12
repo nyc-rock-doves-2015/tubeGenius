@@ -4,10 +4,10 @@
   <%= render 'conversations/participants', conversation: @conversation %>
 </p>
 
-<div class="panel panel-default">
-  <div class="panel-heading"><%= @conversation.subject %></div>
+<div>
+  <div><%= @conversation.subject %></div>
 
-  <div class="panel-body">
+  <div>
     <div class="messages">
       <% @conversation.receipts_for(current_user).each do |receipt| %>
         <% message = receipt.message %>
