@@ -45,6 +45,21 @@
     App.initNewComment(video);
     video.showComments();
     video.addComment();
-    video.updateTime();
-  })
+
+    $(document).on("click", "#user-profile-link", function (event) {
+      video.video.pause();
+      event.preventDefault();
+      event.stopPropagation();
+
+      var $target = $(event.target);
+
+      $.ajax({
+        url: $target.parent().attr("href"),
+        type: 'get'
+      }).done(function (response) {
+        $('#user-modal').html(response);
+      })
+
+    });
+  });
 </script>
