@@ -138,3 +138,7 @@ nav#video-index-nav{
 #dropdown-menu {
   min-width:115px;
 }
+
+.flash {
+  color: red;
+}
