@@ -1,8 +1,38 @@
-<% @results.each do |result| %>
-  <% case result %>
-  <% when Video %>
-  <h1><%= result.title %></h1>
-  <% when User %>
-  <h1><%= result.name %></h1>
-  <% end %>
-<% end %>
+<div class="container">  
+  <div class="row" data-equalizer="foo">
+   <div class="medium-4 columns" >
+      <div class="callout panel" data-equalizer-watch="foo"> 
+        <h1>Videos:</h1>
+        <% @video_results.each do |result| %>
+          <h2><%= link_to result.title, video_path(result) %></h1>
+          <%= result.description %>
+          <h4><%= link_to result.user.name, user_path(result.user) %></h3>
+          <%= link_to image_tag(thumbnail_url(result.url)), video_path(result) %>
+        <% end %>
+      </div>
+    </div>
+    <div class="medium-4 columns">
+      <div class="callout panel" data-equalizer-watch="foo">
+        <h1>Users:</h1>
+        <% @user_results.each do |result| %>
+          <h2><%= result.name %></h2>
+          <% result.videos.each do |video| %>
+            <h3><%= link_to video.title, video_path(video) %></h3>
+            <%= video.description %>
+            <%= link_to image_tag(thumbnail_url(video.url)), video_path(video) %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="medium-4 columns">
+      <div class="callout panel" data-equalizer-watch="foo">        
+        <h1>Comments:</h1>
+        <% @comment_results.each do |result| %>
+          <%= result.content %><br>
+          <%= result.media_url %>
+          by <%= link_to result.user.name, user_path(result.user) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
