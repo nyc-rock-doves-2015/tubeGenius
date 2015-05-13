@@ -16,9 +16,8 @@
 
   <ul class="medium-block-grid-3">
     <% @user.videos.each do |video| %>
-    <li><img src=<%= thumbnail_url(video.url) %>></li>
+    <li><%= link_to image_tag(thumbnail_url(video.url)), video_path(video) %></li>
     <% end %>
   </ul>
 
 </div>
-
