@@ -32,7 +32,7 @@
           <% if current_user %>
             <li class="divider"></li>
             <% if unread_notifications > 0 %>
-              <li>
+              <li class="notifications">
               <%= link_to image_tag("notification.png", size: "25x20"), notifications_path %>
               </li>
             <% end %>

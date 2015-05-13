@@ -89,6 +89,10 @@ li.message_items{
   background-color: #FFFFFF !important;
 }
 
+.top-bar ul li.notifications a {
+  background-color: #FFFFFF !important;
+}
+
 .top-bar ul li.dropdown-item a {
   color: black;
   background-color: #FFFFFF !important;
