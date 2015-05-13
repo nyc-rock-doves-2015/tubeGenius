@@ -12,9 +12,7 @@
     <div class="large-2 columns small-3"></div>
     <div class="large-10 columns">
       <h1 id="box-type" style="font-family: Century">Inbox</h1>
-      <a href="<%= new_message_path %>" class="button round success tiny">
-        Start a conversation
-      </a>
+      <%= link_to 'Start a conversation', new_message_path, class: "button round success tiny", id: "message-button", :"data-reveal-id" => "sendmessage-modal" %>
     <ul id="messages">
       <%= render partial: 'conversations/conversation', collection: @conversations %>
     </ul>
