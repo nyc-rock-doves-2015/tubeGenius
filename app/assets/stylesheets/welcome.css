@@ -20,10 +20,9 @@
 
 #splash-text {
   position:relative;
-  font-family:Londrina Outline;
   font-size:200px;
   z-index:2;
-  color:white;
+  text-align:center;
 }
 
 #background {
@@ -42,4 +41,14 @@
   margin-left: 40%;
   margin-right: 40%;
   display:inline-block;
+}
+
+#tube {
+  color:#40A04F;
+  font-family:Londrina Outline;
+}
+
+#genius {
+  color:#1B77B1;
+  font-family:Londrina solid;
 }
