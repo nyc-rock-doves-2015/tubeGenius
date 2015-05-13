@@ -1,5 +1,8 @@
-
-<li class="message_items">
+<% if unread_notifs.include?(notification) %>
+<li class="notification unread">
+<% else %>
+<li class="notification read">
+<% end %>
   <%= link_to image_tag("trashbin.png", size: "25x20"), notification_path(notification.id), method: :delete %> <%= link_to " #{image_tag Comment.find_by(id: notification.comment_id).user.gravatar_url, size: "25x20"} #{Comment.find_by(id: notification.comment_id).user.name}".html_safe, user_path(Comment.find_by(id: notification.comment_id).user.id) %> commented on
 
   <% if notification.commentable_type = "Video" %>
