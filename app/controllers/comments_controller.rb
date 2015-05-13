@@ -59,8 +59,8 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @commentable = find_commentable
     @comment = Comment.find(params[:id])
+    @commentable = @comment.commentable
   end
 
   def destroy
