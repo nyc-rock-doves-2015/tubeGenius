@@ -12,5 +12,13 @@
         </ul>
       <%end %>
   <% end %>
+
+
+  <ul class="medium-block-grid-3">
+    <% @user.videos.each do |video| %>
+    <li><img src=<%= thumbnail_url(video.url) %>></li>
+    <% end %>
+  </ul>
+
 </div>
 
