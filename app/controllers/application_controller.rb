@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :session_in!
 
-  helper_method :unread_messages, :unread_notifications
+  helper_method :unread_messages, :unread_notifications, :thumbnail_url
 
   def unread_messages
     current_user.mailbox.inbox({:read => false}).count if current_user
@@ -45,4 +45,27 @@ class ApplicationController < ActionController::Base
   def return_point
     session[:return_point] || root_path
   end
+
+  def thumbnail_url(video_url)
+    regex = /youtube.com.*(?:\/|v=)([^&$]+)/
+    "http://img.youtube.com/vi/" + video_url.match(regex)[1] + "/0.jpg"
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
