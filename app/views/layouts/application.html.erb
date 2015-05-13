@@ -34,7 +34,9 @@
           </li>
           <% if current_user %>
             <% if unread_notifications > 0 %>
-              <%= link_to image_tag("notifications.png", size: "25x20"), notifications_path %>
+              <li>
+              <%= link_to image_tag("notification.png", size: "25x20"), notifications_path %>
+              </li>
             <% end %>
             <% if unread_messages > 0 %>
               <li>
