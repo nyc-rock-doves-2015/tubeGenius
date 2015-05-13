@@ -1,7 +1,7 @@
 <% if @user != nil %>
   <h2 id="user-name"><%= @user.name %></h2>
   <%= image_tag @user.gravatar_url %><br>
-  <%= link_to 'Send message', new_message_path(to: @user.id), class: "nice small radius blue button", id: "message-button" %>
+  <%= link_to 'Send message', new_message_path(to: @user.id), class: "nice small radius blue button", id: "message-button", :"data-reveal-id" => "sendmessage-modal" %>
     <h3>Videos</h3>
     <div class="row">
       <% @user.videos.each do |video| %>
