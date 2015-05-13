@@ -8,12 +8,14 @@
 
 .comment {
   min-height: 7em;
-  font-size:15px;
+  font-size:16px;
+  font-family: Century;
   margin-top:2px;
   width: 95%;
   right: 5%;
   background-color: #F8F8F8;
-  border: 1px solid #666;
+  border-radius: 3px;
+  /*border: 1px solid #666;*/
   -webkit-box-shadow: 2px 2px 4px #888;
   -moz-box-shadow: 2px 2px 4px #888;
   box-shadow: 2px 2px 4px #888;
@@ -27,7 +29,7 @@
   overflow-y:auto;
   background-color: white;
   right: 2%;
-  border: 1px solid #666;
+  /*border: 1px solid #666;*/
   -webkit-box-shadow: 2px 2px 4px #888;
   -moz-box-shadow: 2px 2px 4px #888;
   box-shadow: 2px 2px 4px #888;
