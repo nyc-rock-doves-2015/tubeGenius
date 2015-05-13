@@ -17,9 +17,9 @@ class Comment < ActiveRecord::Base
 
   def check_times
     if self.new_record?
-      if self.start_time == ""
+      if self.start_time == "" || self.start_time.to_i < 0
         self.start_time = "0"
-      elsif self.end_time == ""
+      elsif self.end_time == "" || self.end_time.to_i < 0
         self.end_time = "0"
       end
     end
