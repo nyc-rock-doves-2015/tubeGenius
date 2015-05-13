@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   end
   resource :session, :only => [:new, :create, :destroy]
+  resources :notifications
   resources :users, :except => [:destroy]
   resources :conversations, only: [:index, :show, :destroy] do
     member do

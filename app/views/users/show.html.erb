@@ -1,2 +1,47 @@
-<%= render "profile" %>
-<%= render "comments" %>
+<div id="user-container">
+  <% if @user != nil %>
+  <div class="row">
+    <div class="large-12 columns">
+
+      <div class="row">
+        <div class="large-4 small-12 columns">
+          <div class="large-10 panel callout radius">
+            <%= image_tag @user.gravatar_url, size: "160x100" %>
+            <h2 id="user-name"><%= @user.name %></h2>
+            <h5 class="subheader">
+              Member since: <%= @user.created_at.strftime("%m/%d/%Y") %> <br>
+              <%= @user.videos.count %> Videos <br>
+              <%= @user.comments.count %> Comments  <br> <br>
+              <%= link_to 'Send message', new_message_path(to: @user.id), class: "nice small radius blue button", id: "message-button", :"data-reveal-id" => "sendmessage-modal" %>
+            </h5>
+          </div>
+        </div>
+
+        <div class="large-8 columns">
+
+          <div class="row">
+            <h5>Videos</h5>
+            <% @user.videos.each do |video| %>
+
+              <div class="large-4 small-6 columns video">
+                <%= link_to image_tag(thumbnail_url(video.url)), video_path(video) %>
+
+
+                <div class="panel">
+                  <h5><h4><%= link_to truncate(video.title, length: 24), video_path(video) %></h4></h5>
+                  <h6 class="subheader"><%= truncate(video.description, length: 25) %></h6>
+                  <h6 class="subheader">Comments: <%= video.comments.count %></h6>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <% end %>
+  <%= render "comments" %>
+</div>

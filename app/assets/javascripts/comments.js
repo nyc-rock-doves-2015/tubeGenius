@@ -52,7 +52,7 @@ App.formatMediaContent = function (content, type) {
 }
 
 App.formatGravatar = function (user) {
-  return "<a id='user-profile-link' data-reveal-id='user-modal' href='/users/" + user.id.toString() + "'>" + "<img src='" + user.gravatar_url + "'>" + "</a>"
+  return "<a id='user-profile-link' data-reveal-id='user-modal' href='/users/" + user.id.toString() + "'>" + "<img src='" + user.gravatar_url + "' height='30' width='30' >" + "</a>"
 }
 
 App.formatComment = function (start, end, content, user, media_type) {
@@ -98,6 +98,13 @@ App.Popcorn.prototype.addComment = function () {
     var $start = $target[0][3];
     var $end = $target[0][4];
     var media_type;
+
+    if ($start.value === "" || $start.value < 0) {
+      console.log($start.value === "")
+      $start.value = 0;
+    } else if ($end.value === "" || $end.value < 0) {
+      $end.value = 0;
+    }
 
     if ($target[0][5].checked == true) {
       media_type = "text"

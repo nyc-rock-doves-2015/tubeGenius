@@ -1,6 +1,12 @@
-<% Video.all.each do |video| %>
-  <p>
-    <%= link_to video.title, video_path(video) %><br>
-    <a href="#" data-reveal-id="user-modal"><%= image_tag video.user.gravatar_url(:size => 20) %></a> <%=video.user.name %>
-  </p>
-<% end %>
+<div id="video-container">
+  <% Video.all.each do |video| %>
+    <div class="small-4 columns">
+      <div class="video-index">
+        <%= link_to video.title, video_path(video) %><br>
+        <%= link_to image_tag(thumbnail_url(video.url), size: "175x175"), video_path(video) %><br>
+        <%= image_tag video.user.gravatar_url(:size => 20) %>
+        <%= link_to video.user.name, user_path(video.user)  %>
+      </div>
+    </div>
+  <% end %>
+</div>

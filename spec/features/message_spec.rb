@@ -11,8 +11,8 @@ RSpec.feature 'Messaging', :type => :feature do
      click_link "Start a conversation"
      fill_in "message[subject]", :with => "test subject"
      fill_in "message[body]", :with => "test test body"
-     # select "admin", :from => 'recipients'
-     click_button "Send"
+     select user.name, :from => 'recipients'
+     click_button "Submit"
 
      expect(page).to have_text('test subject')
   end

@@ -1,16 +1,28 @@
 class Comment < ActiveRecord::Base
+  after_create :create_notification
 
   belongs_to :user
   belongs_to :video
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable
+  has_many :notifications
 
   validates :content, presence: true
 
-  before_save :format_media
+  before_save :format_media, :check_times
 
   def editable_by?(user)
     user == self.user || user == self.video.user
+  end
+
+  def check_times
+    if self.new_record?
+      if self.start_time == "" || self.start_time.to_i < 0
+        self.start_time = "0"
+      elsif self.end_time == "" || self.end_time.to_i < 0
+        self.end_time = "0"
+      end
+    end
   end
 
   def format_media
@@ -24,4 +36,26 @@ class Comment < ActiveRecord::Base
     end
   end
 
+  def find_video_parent
+    return self.commentable if self.commentable_type == "Video"
+    self.commentable.find_video_parent
+  end
+
+private
+
+  def create_notification
+    @parent = self.commentable
+    @user = User.find_by(id: @parent.user_id)
+      Notification.create(
+       commentable_id: self.commentable.id,
+       commentable_type: self.commentable_type,
+       user_id: @user.id,
+       comment_id: self.id,
+       read: false
+      )
+  end
+
 end
+
+
+

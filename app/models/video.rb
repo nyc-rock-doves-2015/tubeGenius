@@ -2,6 +2,7 @@ class Video < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments, as: :commentable
+  has_many :notifications
 
   validates :title, presence: true
   validates :url, presence: true
@@ -9,5 +10,5 @@ class Video < ActiveRecord::Base
   def static_comments
     self.comments.where(start_time: nil, end_time: nil)
   end
-  
+
 end
