@@ -99,6 +99,13 @@ App.Popcorn.prototype.addComment = function () {
     var $end = $target[0][4];
     var media_type;
 
+    if ($start.value === "" || $start.value < 0) {
+      console.log($start.value === "")
+      $start.value = 0;
+    } else if ($end.value === "" || $end.value < 0) {
+      $end.value = 0;
+    }
+
     if ($target[0][5].checked == true) {
       media_type = "text"
     } else if ($target[0][6].checked == true) {
