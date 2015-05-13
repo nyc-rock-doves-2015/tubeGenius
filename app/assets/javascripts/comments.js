@@ -52,7 +52,7 @@ App.formatMediaContent = function (content, type) {
 }
 
 App.formatGravatar = function (user) {
-  return "<a id='user-profile-link' data-reveal-id='user-modal' href='/users/" + user.id.toString() + "'>" + "<img src='" + user.gravatar_url + "'>" + "</a>"
+  return "<a id='user-profile-link' data-reveal-id='user-modal' href='/users/" + user.id.toString() + "'>" + "<img src='" + user.gravatar_url + "' height='30' width='30' >" + "</a>"
 }
 
 App.formatComment = function (start, end, content, user, media_type) {
