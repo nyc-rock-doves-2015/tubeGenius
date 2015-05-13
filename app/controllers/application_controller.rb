@@ -48,7 +48,7 @@ class ApplicationController < ActionController::Base
 
   def thumbnail_url(video_url)
     regex = /youtube.com.*(?:\/|v=)([^&$]+)/
-    "http://img.youtube.com/vi/" + video_url.match(regex)[1] + "/1.jpg"
+    "http://img.youtube.com/vi/" + video_url.match(regex)[1] + "/0.jpg"
   end
 end
 
