@@ -19,3 +19,17 @@
     </div>
   </div>
 <% end %>
+
+ <script type="text/javascript">
+    $(function(){
+            var stickyHeader = $('.subnav').offset().top;
+
+            $(window).scroll(function(){
+              if( $(window).scrollTop() > stickyHeader ) {
+                      $('.subnav').css({position: 'fixed', top: '50px'});
+              } else {
+                      $('.subnav').css({position: 'static', top: '50px'});
+              }
+            });
+    });
+</script>
