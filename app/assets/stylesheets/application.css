@@ -112,6 +112,7 @@ li.message_items{
 }
 
 div.video-index {
+  margin:0.5%;
   position: relative;
   text-align: center;
   line-height: 40px;
@@ -141,4 +142,8 @@ nav#video-index-nav{
 
 .flash {
   color: red;
+}
+
+#video-container {
+  margin-top:0.5%;
 }
