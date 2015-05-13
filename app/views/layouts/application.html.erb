@@ -29,28 +29,36 @@
 
       <section class="top-bar-section">
         <ul class="right">
-          <li class="has-form">
-            <%= render '/layouts/search' %>
-          </li>
           <% if current_user %>
+            <li class="divider"></li>
             <% if unread_notifications > 0 %>
               <li>
               <%= link_to image_tag("notification.png", size: "25x20"), notifications_path %>
               </li>
             <% end %>
+
+            <li class="divider"></li>
+
             <% if unread_messages > 0 %>
-              <li>
+
+              <li class="message-box">
                 <%= link_to image_tag("full_message_box.png", size: "25x20"), conversations_path %>
               </li>
             <% else %>
-              <li>
+
+              <li class="message-box">
                 <%= link_to image_tag("empty_message_box.png", size: "25x20"), conversations_path %>
               </li>
             <% end %>
+
+            <li class="has-form">
+              <%= render '/layouts/search' %>
+            </li>
             <li class="active">
               <a href="#" data-reveal-id="videocreate-modal" id="buttonForVideoCreate">Create a Video
               </a>
             </li>
+
             <li>
               <%= link_to image_tag(current_user.gravatar_url size: "25x20"),  user_path(current_user) %>
             </li>
@@ -60,13 +68,16 @@
             <li>
               <%= link_to "Sign Out", signout_path %>
             </li>
+
           <% else %>
+
             <li class="active">
               <a href="#" data-reveal-id="signup-modal" id="buttonForSignUp">Sign Up</a>
             </li>
             <li>
               <a href="#" data-reveal-id="signin-modal" id="buttonForSignIn">Sign In</a>
             </li>
+
           <% end %>
         </ul>
       </section>
