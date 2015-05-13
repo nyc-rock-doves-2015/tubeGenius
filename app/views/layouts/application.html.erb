@@ -33,6 +33,9 @@
             <%= render '/layouts/search' %>
           </li>
           <% if current_user %>
+            <% if unread_notifications > 0 %>
+              <%= link_to image_tag("notifications.png", size: "25x20"), notifications_path %>
+            <% end %>
             <% if unread_messages > 0 %>
               <li>
                 <%= link_to image_tag("full_message_box.png", size: "25x20"), conversations_path %>
