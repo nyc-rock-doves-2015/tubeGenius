@@ -34,3 +34,12 @@
   filter: FlipH;
   -ms-filter: "FlipH";
 }
+
+.welcome-modals {
+  position:relative;
+  z-index:2;
+  margin-top: 30%;
+  margin-left: 40%;
+  margin-right: 40%;
+  display:inline-block;
+}
