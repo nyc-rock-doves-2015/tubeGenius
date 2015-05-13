@@ -16,6 +16,7 @@ class ConversationsController < ApplicationController
     end
 
     @conversations = @conversations.paginate(page: params[:page], per_page: 10)
+    render partial: 'conversations/conversation', collection: @conversations if request.xhr?
   end
 
   def redirect_back_or(path)
