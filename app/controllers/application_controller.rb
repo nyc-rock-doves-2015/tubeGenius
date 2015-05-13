@@ -3,10 +3,14 @@ class ApplicationController < ActionController::Base
 
   helper_method :session_in!
 
-  helper_method :unread_messages
+  helper_method :unread_messages, :unread_notifications
 
   def unread_messages
     current_user.mailbox.inbox({:read => false}).count if current_user
+  end
+
+  def unread_notifications
+    current_user.notifications.where({:read => false}).count if current_user
   end
 
   def set_flash(msg)
