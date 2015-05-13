@@ -1,0 +1,16 @@
+#user-modal {
+  overflow-y:auto;
+  height:300px;
+}
+
+#user-container {
+  padding:3%;
+}
+
+#message-button {
+  margin-top:3%;
+}
+
+#user-name {
+  margin-bottom:3%;
+}
