@@ -1,8 +1,8 @@
 <ul class="inline-list">
   <ul class="breadcrumbs">
-    <%= mailbox_section 'inbox', @box %>
-    <%= mailbox_section 'sent', @box %>
-    <%= mailbox_section 'trash', @box %>
+    <%= mailbox_section 'inbox', @box, id: "inbox-link" %>
+    <%= mailbox_section 'sent', @box, id: "sent-link" %>
+    <%= mailbox_section 'trash', @box , id: "trash-link" %>
   </ul>
 
 </ul>
