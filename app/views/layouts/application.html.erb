@@ -60,13 +60,16 @@
             </li>
 
             <li>
-              <%= link_to image_tag(current_user.gravatar_url size: "25x20"),  user_path(current_user) %>
-            </li>
-            <li class="active">
-              <%= link_to current_user.name, user_path(current_user) %>
-            </li>
-            <li>
-              <%= link_to "Sign Out", signout_path %>
+              <a href="#" data-dropdown="hover1" data-options="is_hover:true; hover_timeout:1000">
+                <%= image_tag(current_user.gravatar_url size: '25x20') %>
+                 <%= current_user.name %>
+               </a>
+              <ul id="hover1" class="f-dropdown" data-dropdown-content>
+                <li class="dropdown-item"><a href="<%= user_path(current_user) %>">View Profile</a></li>
+                <li class="dropdown-item"><a href="<%= conversations_path %>">Conversations</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-item"><a href="<%= signout_path %>">Sign Out</a></li>
+              </ul>
             </li>
 
           <% else %>
