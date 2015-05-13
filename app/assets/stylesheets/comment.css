@@ -29,8 +29,3 @@
 #comment_button {
   margin-bottom:15px;
 }
-
-#user-modal {
-  overflow-y:auto;
-  height:300px;
-}
