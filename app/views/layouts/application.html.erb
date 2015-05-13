@@ -7,8 +7,8 @@
     <title>tubeGenius</title>
 
     <%= stylesheet_link_tag    "application" %>
-    <link rel="stylesheet" type="text/css" href="welcome.css">
     <link href='http://fonts.googleapis.com/css?family=Londrina+Outline' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Londrina+Solid' rel='stylesheet' type='text/css'>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <script src="js/foundation/foundation.js"></script>
@@ -29,44 +29,58 @@
 
       <section class="top-bar-section">
         <ul class="right">
-          <li class="has-form">
-            <%= render '/layouts/search' %>
-          </li>
           <% if current_user %>
+            <li class="divider"></li>
             <% if unread_notifications > 0 %>
-              <li>
+              <li class="notifications">
               <%= link_to image_tag("notification.png", size: "25x20"), notifications_path %>
               </li>
             <% end %>
+
+            <li class="divider"></li>
+
             <% if unread_messages > 0 %>
-              <li>
+
+              <li class="message-box">
                 <%= link_to image_tag("full_message_box.png", size: "25x20"), conversations_path %>
               </li>
             <% else %>
-              <li>
+
+              <li class="message-box">
                 <%= link_to image_tag("empty_message_box.png", size: "25x20"), conversations_path %>
               </li>
             <% end %>
+
+            <li class="has-form">
+              <%= render '/layouts/search' %>
+            </li>
             <li class="active">
               <a href="#" data-reveal-id="videocreate-modal" id="buttonForVideoCreate">Create a Video
               </a>
             </li>
+
             <li>
-              <%= link_to image_tag(current_user.gravatar_url size: "25x20"),  user_path(current_user) %>
+              <a href="#" data-dropdown="hover1" data-options="is_hover:true; hover_timeout:1000">
+                <%= image_tag(current_user.gravatar_url size: '25x20') %>
+                 <%= current_user.name %>
+               </a>
+              <ul id="hover1" class="f-dropdown" data-dropdown-content>
+                <li class="dropdown-item"><a href="<%= user_path(current_user) %>">View Profile</a></li>
+                <li class="dropdown-item"><a href="<%= conversations_path %>">Conversations</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-item"><a href="<%= signout_path %>">Sign Out</a></li>
+              </ul>
             </li>
-            <li class="active">
-              <%= link_to current_user.name, user_path(current_user) %>
-            </li>
-            <li>
-              <%= link_to "Sign Out", signout_path %>
-            </li>
+
           <% else %>
+
             <li class="active">
               <a href="#" data-reveal-id="signup-modal" id="buttonForSignUp">Sign Up</a>
             </li>
             <li>
               <a href="#" data-reveal-id="signin-modal" id="buttonForSignIn">Sign In</a>
             </li>
+
           <% end %>
         </ul>
       </section>

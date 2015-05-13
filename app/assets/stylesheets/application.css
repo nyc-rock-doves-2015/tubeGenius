@@ -53,6 +53,7 @@ body {
 .icon {
   display: inline-block;
 }
+
 ul {
   list-style: none;
 }
@@ -69,4 +70,35 @@ ul.breadcrumbs{
 li.message_items{
   background-color: white;
   border-radius: 5px;
+}
+
+.top-bar {
+  background: none repeat scroll 0 0 #FFFFFF;
+  box-shadow: 0 1px black;
+}
+
+.top-bar .name h1 a {
+  font-size: 30px;
+  color: black;
+  width: 50%;
+  padding: 0 15px;
+  font-family:Londrina Solid;
+}
+
+.top-bar ul li.message-box a {
+  background-color: #FFFFFF !important;
+}
+
+.top-bar ul li.notifications a {
+  background-color: #FFFFFF !important;
+}
+
+.top-bar ul li.dropdown-item a {
+  color: black;
+  background-color: #FFFFFF !important;
+}
+
+.top-bar ul li.dropdown-item a:hover {
+  color: gray;
+  background-color: #FFFFFF !important;
 }
