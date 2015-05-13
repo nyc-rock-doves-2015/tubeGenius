@@ -1,9 +1,23 @@
-<div id="user_page">
-  <h3>Comments</h3>
+<div class="row">
+  <h5>Comments by <%= @user.name %></h5>
   <% @user.comments.each do |comment| %>
-    <div>
-      <p><%= "#{@user.name} on #{comment.created_at}:" %></p>
-      <p><%= comment.content %> <%= "(#{comment.start_time}-#{comment.end_time})" if comment.start_time %> </p>
+    <div class="large-12 columns">
+      <div class="panel">
+        <div class="row">
+          <div class="large-2 small-6 columns">
+            <!-- <img src="http://placehold.it/300x300&text=Site Owner"> -->
+            <%= image_tag @user.gravatar_url %>
+          </div>
+
+          <div class="large-10 small-6 columns">
+            <strong>Replied to <%= "#{comment.commentable.user.name}'s  #{comment.commentable_type} on #{comment.created_at.strftime("%m/%d/%Y")}:" %> on <hr/></strong>
+
+            <%= comment.content %> <%= "(#{comment.start_time}-#{comment.end_time})" if comment.start_time %>
+          </div>
+
+        </div>
+      </div>
     </div>
   <% end %>
+
 </div>
