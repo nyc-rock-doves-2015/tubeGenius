@@ -5,12 +5,11 @@
       <div class="panel">
         <div class="row">
           <div class="large-2 small-6 columns">
-            <!-- <img src="http://placehold.it/300x300&text=Site Owner"> -->
             <%= image_tag @user.gravatar_url %>
           </div>
 
           <div class="large-10 small-6 columns">
-            <strong>Replied to <%= "#{comment.commentable.user.name}'s  #{comment.commentable_type} on #{comment.created_at.strftime("%m/%d/%Y")}:" %> on <hr/></strong>
+            <strong>Replied to <%= link_to comment.commentable.user.name, user_path(comment.commentable.user) %>'s <%= link_to comment.commentable_type, video_path(comment.find_video_parent) %> on <%= comment.created_at.strftime("%m/%d/%Y") %> : </strong><br>
 
             <%= comment.content %> <%= "(#{comment.start_time}-#{comment.end_time})" if comment.start_time %>
           </div>
