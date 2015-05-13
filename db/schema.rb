@@ -89,14 +89,10 @@ ActiveRecord::Schema.define(version: 20150512195957) do
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "comment_id"
-    t.integer  "notifiable_id"
-    t.string   "notifiable_type"
     t.boolean  "read"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "notifications", ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",            null: false
