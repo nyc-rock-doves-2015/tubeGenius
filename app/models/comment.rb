@@ -40,6 +40,11 @@ private
       )
   end
 
+  def find_video_parent
+    return self.commentable if self.commentable_type == "Video"
+    self.commentable.find_video_parent
+  end
+
 end
 
 
