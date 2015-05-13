@@ -9,10 +9,20 @@ class Comment < ActiveRecord::Base
 
   validates :content, presence: true
 
-  before_save :format_media
+  before_save :format_media, :check_times
 
   def editable_by?(user)
     user == self.user || user == self.video.user
+  end
+
+  def check_times
+    if self.new_record?
+      if self.start_time == "" || self.start_time.to_i < 0
+        self.start_time = "0"
+      elsif self.end_time == "" || self.end_time.to_i < 0
+        self.end_time = "0"
+      end
+    end
   end
 
   def format_media
