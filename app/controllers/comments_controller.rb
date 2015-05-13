@@ -65,7 +65,7 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find(params[:id])
-    @notification = Notification.where(:comment_id =&gt; @comment.id)
+    @notification = Notification.where(comment_id: comment.id)
     if @notification.nil?
       @notification.destroy
     end
