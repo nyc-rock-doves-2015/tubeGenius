@@ -1,0 +1,7 @@
+<p><%= link_to "delete", notification_path(notification.id), method: :delete %> <%= link_to Comment.find_by(id: notification.comment_id).user.name, user_path(Comment.find_by(id: notification.comment_id).user.id) %> commented on
+  <% if notification.commentable_type = "Video" %>
+    <%= link_to "your video", video_path(notification.commentable_id) %></p>
+  <% elsif notification.commentable_type = "Comment" %>
+    <%= link_to "your comment", video_path(notification.commentable.commentable.id) %>
+    <% end %></p>
+

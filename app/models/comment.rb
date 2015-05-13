@@ -1,9 +1,11 @@
 class Comment < ActiveRecord::Base
+  after_create :create_notification
 
   belongs_to :user
   belongs_to :video
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable
+  has_many :notifications
 
   validates :content, presence: true
 
@@ -24,4 +26,21 @@ class Comment < ActiveRecord::Base
     end
   end
 
+private
+
+  def create_notification
+    @parent = self.commentable
+    @user = User.find_by(id: @parent.user_id)
+      Notification.create(
+       commentable_id: self.commentable.id,
+       commentable_type: self.commentable_type,
+       user_id: @user.id,
+       comment_id: self.id,
+       read: false
+      )
+  end
+
 end
+
+
+
