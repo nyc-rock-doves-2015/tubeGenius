@@ -26,6 +26,11 @@ class Comment < ActiveRecord::Base
     end
   end
 
+  def find_video_parent
+    return self.commentable if self.commentable_type == "Video"
+    self.commentable.find_video_parent
+  end
+
 private
 
   def create_notification
@@ -38,11 +43,6 @@ private
        comment_id: self.id,
        read: false
       )
-  end
-
-  def find_video_parent
-    return self.commentable if self.commentable_type == "Video"
-    self.commentable.find_video_parent
   end
 
 end
