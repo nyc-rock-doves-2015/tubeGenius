@@ -102,3 +102,11 @@ li.message_items{
   color: gray;
   background-color: #FFFFFF !important;
 }
+
+.notification {
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+.unread {
+  background-color: #FFFF99;
+}
