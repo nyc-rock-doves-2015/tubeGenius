@@ -134,3 +134,7 @@ ul#video-index-breadcrumbs {
 
 nav#video-index-nav{
 }
+
+#dropdown-menu {
+  min-width:115px;
+}
