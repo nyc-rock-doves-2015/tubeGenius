@@ -8,4 +8,17 @@ $(function () {
       $('#sendmessage-modal').html(response);
     })
   })
+
+  $(document).on("submit", "#message-form", function (event) {
+    event.preventDefault();
+    $target = $(event.target)
+    $.ajax({
+      url: $target.attr("action"),
+      type: 'post',
+      data: $target.serialize()
+    }).done(function () {
+      $('#sendmessage-modal').foundation('reveal', 'close');
+      video.video.play();
+    })
+  })
 })
