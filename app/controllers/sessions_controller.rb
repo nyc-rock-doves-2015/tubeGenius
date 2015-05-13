@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to videos_path
     else
       set_flash("Bad login information")
-      redirect_to root_path
+      redirect_to signup_path
     end
   end
 
