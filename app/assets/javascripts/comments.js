@@ -27,7 +27,7 @@ App.initNewComment = function (popcorn_instance) {
 
 App.formatSeconds = function (seconds) {
   var min = (Math.floor(seconds/60)).toString();
-  var sec; 
+  var sec;
   if(seconds % 60 == 0) {
     sec = "00";
   } else if ((seconds % 60) < 10) {
@@ -60,7 +60,7 @@ App.formatComment = function (start, end, content, user, media_type) {
   var start = App.formatSeconds(start);
   var end = App.formatSeconds(end);
   var gravatar = App.formatGravatar(user);
-  return "@" + start + "-" + end + "<br>" + formatted_content + "<br>" + "-" + user.name + "<br>" + gravatar
+  return  gravatar + " @" +start + "-" + end + "<br>" + "<br>" + "<p>" + formatted_content + "</p>"
 }
 
 App.Popcorn = function (video_url, video_container, comment_array) {
@@ -76,8 +76,8 @@ App.Popcorn.prototype.showComments = function () {
       start: this.comments[x].start_time,
       end: this.comments[x].end_time,
       text: App.formatComment(
-        this.comments[x].start_time, 
-        this.comments[x].end_time, 
+        this.comments[x].start_time,
+        this.comments[x].end_time,
         this.comments[x].content,
         this.comments[x].user),
       target: "com"
@@ -92,7 +92,7 @@ App.Popcorn.prototype.addComment = function () {
     event.preventDefault();
 
     $('#comment-modal').foundation('reveal', 'close');
-    
+
     var $target = $(event.target);
     var $text = $target[0][2];
     var $start = $target[0][3];
@@ -120,12 +120,12 @@ App.Popcorn.prototype.addComment = function () {
       data: $target.serialize()
     }).done(function (response) {
       self.video.footnote({
-        start: response.start_time, 
-        end: response.end_time, 
-        text: App.formatComment(parseInt(response.start_time), parseInt(response.end_time), $text.value, response.user, media_type), 
+        start: response.start_time,
+        end: response.end_time,
+        text: App.formatComment(parseInt(response.start_time), parseInt(response.end_time), $text.value, response.user, media_type),
         target: "com"});
-      $start.value = ""; 
-      $end.value = ""; 
+      $start.value = "";
+      $end.value = "";
       $text.value = "";
     });
   });
