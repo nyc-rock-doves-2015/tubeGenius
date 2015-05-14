@@ -17,7 +17,13 @@
       <div class="form-group">
         <%= text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true %>
       </div>
-      <%= submit_tag "Send Message", class: 'btn btn-primary' %>
+      <div class="action">
+          <ul class="button-group">
+            <li>
+              <button class="small button" name="commit" id="createNewMessage" type="submit">Send Message</button>
+            </li>
+          </ul>
+        </div>
     <% end %>
   </div>
   <aside class="large-3 columns hide-for-small">

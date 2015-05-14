@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe CommentsController do
 
-  let(:video) { create(:video) }
-  let(:user) { create(:user) }
+  let!(:video) { create(:video) }
+  let!(:user) { create(:user) }
 
   describe 'GET #new' do
     it "renders the :new view"do

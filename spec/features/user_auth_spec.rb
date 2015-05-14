@@ -20,7 +20,7 @@ RSpec.feature 'User', :type => :feature do
     fill_in "signup_password_confirmation", :with => "password"
     click_button "Sign Up"
 
-    expect(page).to have_text("TubeGenius Profile")
+    expect(page).to have_text("test_user")
   end
 
   scenario "Non-existant user cannot sign in" do

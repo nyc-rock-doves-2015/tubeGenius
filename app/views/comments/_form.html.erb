@@ -14,9 +14,15 @@
 
   <%= f.radio_button :media_type, 'VIDEO', :value => 'video' %>
   <%= label :media_type, 'VIDEO' %>
-  
+
   <%= f.radio_button :media_type, 'IMAGE', :value =>'image' %>
   <%= label :media_type, 'IMAGE' %>
 
-  <%= f.submit "Submit" %>
+  <div class="action">
+    <ul class="button-group">
+      <li>
+        <button class="small button" name="commit" id="createNewComment" type="submit">Submit</button>
+      </li>
+    </ul>
+  </div>
 <% end %>

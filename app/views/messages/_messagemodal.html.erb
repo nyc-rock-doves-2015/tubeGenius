@@ -1,6 +1,6 @@
 <% page_header "Start Conversation" %>
 
-<%= form_tag messages_path, method: :post do %>
+<%= form_tag messages_path, method: :post, id: "message-form" do %>
   <div class="form-group">
     <%= label_tag 'message[subject]', 'Subject' %>
     <%= text_field_tag 'message[subject]', nil, class: 'form-control', required: true %>
@@ -25,3 +25,13 @@
   </div>
 
 <% end %>
+
+<script>
+  $(document).ready(function(){
+    $('.chosen-select').chosen({
+      allow_single_deselect: true,
+      no_results_text: "No results matched",
+      width: '200px'
+    });
+  });
+</script>
