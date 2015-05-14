@@ -13,7 +13,6 @@ App.getComments = function (video_id) {
 };
 
 App.initNewComment = function (popcorn_instance) {
-  console.log("initNewComment", popcorn_instance);
   $('#comment_button').on("click", function (event) {
     video.video.pause();
     
@@ -130,6 +129,7 @@ App.Popcorn.prototype.addComment = function () {
       $start.value = "";
       $end.value = "";
       $text.value = "";
+      video.video.play();
     });
   });
 }
