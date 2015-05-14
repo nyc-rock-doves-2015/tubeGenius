@@ -13,7 +13,10 @@ App.getComments = function (video_id) {
 };
 
 App.initNewComment = function (popcorn_instance) {
+  console.log("initNewComment", popcorn_instance);
   $('#comment_button').on("click", function (event) {
+    video.video.pause();
+    
     $('.new_comment')[0][3].value = Math.floor(popcorn_instance.video.currentTime());
     var end_time = setInterval(function () {
         $('.new_comment')[0][4].value = Math.floor(popcorn_instance.video.currentTime() + 5);
