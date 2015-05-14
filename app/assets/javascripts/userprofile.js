@@ -19,6 +19,9 @@ $(function () {
     }).done(function () {
       $('#sendmessage-modal').foundation('reveal', 'close');
       video.video.play();
+    }).fail(function () {
+      $('#sendmessage-modal').foundation('reveal', 'close');
+      video.video.play();
     })
   })
 })
