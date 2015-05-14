@@ -54,6 +54,10 @@
     video.showComments();
     video.addComment();
 
+    $(document).on("click", ".comment", function (event) {
+      video.video.pause();
+    })
+
     $(document).on("click", "#user-profile-link", function (event) {
       video.video.pause();
       event.preventDefault();
