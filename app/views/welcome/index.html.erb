@@ -16,15 +16,16 @@
   </div>
 
   <ul class="welcome-modals" style="text-align:center;">
-    <li>
-      <a class="button round" href="#" data-reveal-id="signup-modal" id="buttonForSignUp">Sign Up</a>
-      <a href="#" class="button round" data-reveal-id="signin-modal" id="buttonForSignIn">Sign In</a>
-      <row>
-         <li>
-          <a style="width:240px;" href="<%= videos_path %>" class="button success round">Browse</a>
-        </li>
-      </row>
-  </ul>
+    <% if !current_user %>
+      <li>
+        <a class="button round" href="#" data-reveal-id="signup-modal" id="buttonForSignUp">Sign Up</a>
+        <a href="#" class="button round" data-reveal-id="signin-modal" id="buttonForSignIn">Sign In</a>
+      </li>
+    <% end %>
+      <li>
+        <a style="width:240px;" href="<%= videos_path %>" class="button success round">Browse</a>
+      </li>
+    </ul>
 
   <script>
     $(document).foundation("reflow");
