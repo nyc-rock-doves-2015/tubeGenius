@@ -49,7 +49,7 @@ class VideosController < ApplicationController
     comments = video.comments
 
     json_arr << video.url
-    json_arr << comments.where.not(start_time: nil, end_time: nil).as_json({:include => { :user => { :methods => :gravatar_url }}})
+    json_arr << comments.where.not(start_time: nil, end_time: nil).as_json({ include: { user: { :methods => :gravatar_url, only: [:id, :name] }}})
 
     render json: json_arr
   end
