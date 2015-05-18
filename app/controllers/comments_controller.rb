@@ -65,10 +65,8 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find(params[:id])
-    @notification = Notification.where(comment_id: comment.id)
-    if @notification.nil?
-      @notification.destroy
-    end
+    notification = Notification.where(comment_id: comment.id)
+    notification.delete_all
     comment.destroy if comment.editable_by?(current_user)
     render text: "ok"
   end
