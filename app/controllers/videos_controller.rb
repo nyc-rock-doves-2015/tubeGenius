@@ -13,7 +13,7 @@ class VideosController < ApplicationController
         render json: [
           @video.url,
           @comments.where.not(start_time: nil, end_time: nil).
-            as_json({:include => { :user => { :methods => :gravatar_url }}})
+            as_json({:include => { :user => { :methods => :gravatar_url, only: [:id, :name] }}})
         ]
       }
     end
