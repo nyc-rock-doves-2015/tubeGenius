@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'New comment', :type => :feature do
+RSpec.feature 'New comment', type: :feature do
 
   let!(:user) { User.create(name: "username", password: 'password', password_confirmation: 'password')}
 
@@ -10,9 +10,9 @@ RSpec.feature 'New comment', :type => :feature do
    page.set_rack_session(user_id: user.id)
 
    visit new_video_comment_path(video)
-     fill_in "comment[content]", :with => "test content"
+     fill_in "comment[content]", with: "test content"
      click_button "Submit"
-     visit video_json_path(video)
+     visit video_path(video, format: :json)
      expect(page).to have_text('test content')
   end
 
