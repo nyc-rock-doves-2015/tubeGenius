@@ -43,7 +43,7 @@ App.formatSeconds = function (seconds) {
 App.formatMediaContent = function (content, type) {
   var formatted_content;
   if (type === "image") {
-    formatted_content = "<img src=" + content + " style='height:100px;width:100px;'></img>";
+    formatted_content = "<img src=" + content + " class='comment-image'></img>";
   } else if (type === "video") {
     youtube_id = content.split("=")[1];
     formatted_content = "<iframe src='//www.youtube.com/embed/" + youtube_id + "'></iframe>";
