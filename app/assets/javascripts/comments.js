@@ -7,7 +7,7 @@ App.getComments = function (video_id) {
     url: '/videos/' + video_id + '/json',
     type: 'get'
   }).done(function (response) {
-    json_data = response
+    json_data = response;
   });
   return json_data;
 };
@@ -18,59 +18,59 @@ App.initNewComment = function (popcorn_instance) {
     
     $('.new_comment')[0][3].value = Math.floor(popcorn_instance.video.currentTime());
     var end_time = setInterval(function () {
-        $('.new_comment')[0][4].value = Math.floor(popcorn_instance.video.currentTime() + 5);
-      }, 100);
+      $('.new_comment')[0][4].value = Math.floor(popcorn_instance.video.currentTime() + 5);
+    }, 100);
 
     $('#comment_end_time').on("focus", function () {
       clearInterval(end_time);
-    })
+    });
   });
-}
+};
 
 App.formatSeconds = function (seconds) {
   var min = (Math.floor(seconds/60)).toString();
   var sec;
-  if(seconds % 60 == 0) {
+  if(seconds % 60 === 0) {
     sec = "00";
   } else if ((seconds % 60) < 10) {
     sec = "0" + (seconds % 60).toString();
   } else {
     sec = (seconds%60).toString();
   }
-  return min + ":" + sec
-}
+  return min + ":" + sec;
+};
 
 App.formatMediaContent = function (content, type) {
   var formatted_content;
   if (type === "image") {
-    formatted_content = "<img src=" + content + " style='height:100px;width:100px;'></img>"
+    formatted_content = "<img src=" + content + " style='height:100px;width:100px;'></img>";
   } else if (type === "video") {
-    youtube_id = content.split("=")[1]
-    formatted_content = "<iframe src='//www.youtube.com/embed/" + youtube_id + "'></iframe>"
+    youtube_id = content.split("=")[1];
+    formatted_content = "<iframe src='//www.youtube.com/embed/" + youtube_id + "'></iframe>";
   } else {
-    formatted_content = content
+    formatted_content = content;
   }
-  return formatted_content
-}
+  return formatted_content;
+};
 
 App.formatGravatar = function (user) {
-  return "<a id='user-profile-link' data-reveal-id='user-modal' href='/users/" + user.id.toString() + "'>" + "<img src='" + user.gravatar_url + "' height='30' width='30' >" + "</a>"
-}
+  return "<a id='user-profile-link' data-reveal-id='user-modal' href='/users/" + user.id.toString() + "'>" + "<img src='" + user.gravatar_url + "' height='30' width='30' >" + "</a>";
+};
 
 App.formatComment = function (start, end, content, user, media_type) {
   var formatted_content = App.formatMediaContent(content, media_type);
   var start = App.formatSeconds(start);
   var end = App.formatSeconds(end);
   var gravatar = App.formatGravatar(user);
-  return  gravatar + " @" +start + "-" + end + "<br>" + "<br>" + "<p>" + formatted_content + "</p>"
-}
+  return  gravatar + " @" +start + "-" + end + "<br>" + "<br>" + "<p>" + formatted_content + "</p>";
+};
 
 App.Popcorn = function (video_url, video_container, comment_array) {
   var vid_setup = Popcorn.HTMLYouTubeVideoElement(video_container);
   vid_setup.src = video_url + "&controls=2"
   this.video = Popcorn(vid_setup);
   this.comments = comment_array;
-}
+};
 
 App.Popcorn.prototype.showComments = function () {
   for(x=0; x<this.comments.length; x++){
@@ -85,7 +85,7 @@ App.Popcorn.prototype.showComments = function () {
       target: "com"
     });
   }
-}
+};
 
 App.Popcorn.prototype.addComment = function () {
   var self = this;
@@ -102,18 +102,17 @@ App.Popcorn.prototype.addComment = function () {
     var media_type;
 
     if ($start.value === "" || $start.value < 0) {
-      console.log($start.value === "")
       $start.value = 0;
     } else if ($end.value === "" || $end.value < 0) {
       $end.value = 0;
     }
 
-    if ($target[0][5].checked == true) {
-      media_type = "text"
-    } else if ($target[0][6].checked == true) {
-      media_type = "video"
-    } else if ($target[0][7].checked == true) {
-      media_type = "image"
+    if ($target[0][5].checked === true) {
+      media_type = "text";
+    } else if ($target[0][6].checked === true) {
+      media_type = "video";
+    } else if ($target[0][7].checked === true) {
+      media_type = "image";
     }
 
     $.ajax({
@@ -132,4 +131,4 @@ App.Popcorn.prototype.addComment = function () {
       video.video.play();
     });
   });
-}
+};
