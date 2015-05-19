@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   resources :videos do
     resources :comments
-    get 'json' => 'videos#json_url_and_comments', as: 'json'
-
   end
   resource :session, :only => [:new, :create, :destroy]
   resources :notifications

@@ -4,7 +4,7 @@ App.getComments = function (video_id) {
   var json_data;
   $.ajax({
     async: false,
-    url: '/videos/' + video_id + '/json',
+    url: '/videos/' + video_id + '.json',
     type: 'get'
   }).done(function (response) {
     json_data = response;
