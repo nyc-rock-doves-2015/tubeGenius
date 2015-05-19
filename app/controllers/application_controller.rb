@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
+
   protect_from_forgery with: :exception
-
   helper_method :session_in!
-
   helper_method :unread_messages, :unread_notifications, :thumbnail_url
 
   def unread_messages
