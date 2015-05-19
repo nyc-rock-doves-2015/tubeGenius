@@ -7,5 +7,4 @@ $(document).ready(function(){
   setTimeout(function(){
     $(".welcome-modals li").fadeIn(1000);
     }, 2300);
-
 });

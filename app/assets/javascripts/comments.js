@@ -1,4 +1,4 @@
-var App = function() {};
+var App = {};
 
 App.getComments = function (video_id) {
   var json_data;
