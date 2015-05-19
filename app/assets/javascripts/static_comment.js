@@ -4,5 +4,5 @@ $(document).ready(function(){
     if ($("#static_comments").is(':visible')) {
       $("html, body").animate({scrollTop: $("#static_comments").offset().top});
   }
-  })
-})
+  });
+});
