@@ -5,7 +5,19 @@ class VideosController < ApplicationController
   def show
     @video = Video.find(params[:id])
     @comment = @video.comments.new
-    @comments = @video.static_comments
+    @comments = @video.comments
+
+    respond_to do |format|
+      format.html { render :show }
+      format.json {
+        render json: [
+          @video.url,
+          @comments.where.not(start_time: nil, end_time: nil).
+            as_json({:include => { :user => { :methods => :gravatar_url }}})
+        ]
+      }
+    end
+
   end
 
   def new
@@ -41,16 +53,6 @@ class VideosController < ApplicationController
       flash[:notice] = "Sorry, your video didn't save. Please try again."
       redirect_to new_video_path
     end
-  end
-
-  def json_url_and_comments(json_arr = [], comment_arr = [])
-    video = Video.find(params[:video_id])
-    comments = video.comments
-
-    json_arr << video.url
-    json_arr << comments.where.not(start_time: nil, end_time: nil).as_json({ include: { user: { :methods => :gravatar_url, only: [:id, :name] }}})
-
-    render json: json_arr
   end
 
   private
