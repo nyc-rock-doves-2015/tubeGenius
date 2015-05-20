@@ -7,8 +7,6 @@ class User < ActiveRecord::Base
   acts_as_messageable
   has_many :notifications
 
-  include Gravtastic
-  gravtastic
   validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -20,6 +18,9 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :message_users
   has_many :messages, through: :message_users
+
+  include Gravtastic
+  gravtastic
 
   def mailboxer_email(object)
     email
