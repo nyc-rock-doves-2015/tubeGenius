@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'New video', :type => :feature do
+RSpec.feature 'Delete a video', :type => :feature do
   let!(:user) { create(:user) }
   let!(:video) { create(:video) }
   let!(:video_permission) { create(:video, :user_id => 10) }
