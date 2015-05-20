@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
 
   def index
     @video = Video.find(params[:video_id])
-    @comments = @video.static_comments
+    @comments = @video.comments
   end
 
   def edit
