@@ -133,16 +133,6 @@ div.video-index {
   box-shadow: 2px 2px 4px #888;
 }
 
-ul#video-index-breadcrumbs {
-  background-color: #F5F5F5;
-  border: 1px solid #666;
-  -webkit-box-shadow: 1px 1px 1px #888;
-  -moz-box-shadow: 1px 1px 1px #888;
-}
-
-nav#video-index-nav{
-}
-
 #dropdown-menu {
   min-width:115px;
 }
