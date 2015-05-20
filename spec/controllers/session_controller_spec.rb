@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController do
-  let!(:user) { User.create(name: "username", password: 'password', password_confirmation: 'password')}
+  let!(:user) { User.create(name: "username", email: "user@testuser.com", password: 'password', password_confirmation: 'password')}
 
   describe 'GET #new' do
     it "renders the :new view" do
