@@ -1,12 +1,7 @@
 <h5> <%= comment.user ? (link_to comment.user.name, user_path(comment.user)) : "guest" %> at <%= comment.created_at %></h5>
 <p> <%= comment.start_time %> <%= comment.end_time%> </p>
 
-<p> <%= comment.content %> </p>
-
-
-<% if comment.media_url %>
-<p> Media: <%= link_to comment.media_type, comment.media_url %></p>
-<% end %>
+<%= comment.content %> 
 
 <%= link_to "Respond to comment", new_comment_path(comment.id) %>
 <ul>

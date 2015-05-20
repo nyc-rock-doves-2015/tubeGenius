@@ -34,7 +34,7 @@
     <% if current_user && @video.availability == "Public" || @video.availability == "Personal" && @video.user_id == current_user.id %>
       <button id="static_comment_button" class="video-show-button">View Comments</button>
       <div id="static_comments" style="display: none">
-        <%= render @video.static_comments %>
+        <%= render @video.comments %>
       </div>
     <% end %>
   </div>
