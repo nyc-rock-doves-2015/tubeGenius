@@ -16,6 +16,7 @@ RSpec.feature 'User', :type => :feature do
   scenario "User can sign up" do
     visit root_path
     fill_in "signup_name", :with => "test_user"
+    fill_in "user_email", :with => "test_user@testuser.com"
     fill_in "signup_password", :with => "password"
     fill_in "signup_password_confirmation", :with => "password"
     click_button "Sign Up"

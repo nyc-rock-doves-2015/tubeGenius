@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'New video', :type => :feature do
-  let!(:user) { User.create(name: "username", password: 'password', password_confirmation: 'password')}
+  let!(:user) { create(:user) }
 
   scenario "User creates a new video" do
    page.set_rack_session(user_id: user.id)
