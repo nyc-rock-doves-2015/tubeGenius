@@ -6,7 +6,7 @@ $(function () {
         type: 'get'
       }).done(function (response) {
         $('#messages').html(response);
-        $('#box-type').html("Inbox")
+        $('#box-type').html("Inbox");
       });
     });
 
@@ -17,7 +17,7 @@ $(function () {
       type: 'get'
     }).done(function (response) {
       $('#messages').html(response);
-      $('#box-type').html("Sent messages")
+      $('#box-type').html("Sent messages");
     });
   });
 
@@ -28,8 +28,8 @@ $(function () {
       type: 'get'
     }).done(function (response) {
       $('#messages').html(response);
-      $('#box-type').html("Trash")
+      $('#box-type').html("Trash");
     });
   });
-})  
+});  
   

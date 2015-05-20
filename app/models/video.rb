@@ -6,9 +6,4 @@ class Video < ActiveRecord::Base
 
   validates :title, presence: true
   validates :url, presence: true
-
-  def static_comments
-    self.comments.where(start_time: nil, end_time: nil)
-  end
-
 end
