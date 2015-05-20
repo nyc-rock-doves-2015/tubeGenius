@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  before_save { self.email = email.downcase }
+
   has_secure_password
   acts_as_messageable
   has_many :notifications
