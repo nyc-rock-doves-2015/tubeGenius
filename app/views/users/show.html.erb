@@ -24,7 +24,7 @@
             <% @user.videos.each do |video| %>
 
               <div class="large-4 small-6 columns video">
-                <%= link_to image_tag(thumbnail_url(video.url)), video_path(video) %>
+                <%= link_to image_tag(video.thumbnail_url), video_path(video) %>
 
 
                 <div class="panel">

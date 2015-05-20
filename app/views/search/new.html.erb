@@ -3,23 +3,23 @@
    <div class="medium-4 columns" >
       <div class="callout panel" data-equalizer-watch="foo"> 
         <h1>Videos:</h1>
-        <% @video_results.each do |result| %>
-          <h2><%= link_to result.title, video_path(result) %></h1>
-          <%= result.description %>
-          <h4><%= link_to result.user.name, user_path(result.user) %></h3>
-          <%= link_to image_tag(thumbnail_url(result.url)), video_path(result) %>
+        <% @video_results.each do |video| %>
+          <h2><%= link_to video.title, video_path(video) %></h1>
+          <%= video.description %>
+          <h4><%= link_to video.user.name, user_path(video.user) %></h3>
+          <%= link_to image_tag(video.thumbnail_url), video_path(video) %>
         <% end %>
       </div>
     </div>
     <div class="medium-4 columns">
       <div class="callout panel" data-equalizer-watch="foo">
         <h1>Users:</h1>
-        <% @user_results.each do |result| %>
-          <h2><%= result.name %></h2>
-          <% result.videos.each do |video| %>
+        <% @user_results.each do |user| %>
+          <h2><%= user.name %></h2>
+          <% user.videos.each do |video| %>
             <h3><%= link_to video.title, video_path(video) %></h3>
             <%= video.description %>
-            <%= link_to image_tag(thumbnail_url(video.url)), video_path(video) %>
+            <%= link_to image_tag(video.thumbnail_url), video_path(video) %>
           <% end %>
         <% end %>
       </div>

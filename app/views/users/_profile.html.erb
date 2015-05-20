@@ -8,7 +8,7 @@
         <h4><%= link_to video.title, video_path(video) %></h4><ul>
         <p>Category: <%= video.category %></p>
         <p>Description: <%= video.description %></p>
-        <p><%= link_to image_tag(thumbnail_url(video.url)), video_path(video) %></p>
+        <p><%= link_to image_tag(video.thumbnail_url), video_path(video) %></p>
         <p>Comments: <%= video.comments.count %></p>
         </ul>
       <%end %>
