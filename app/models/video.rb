@@ -5,5 +5,8 @@ class Video < ActiveRecord::Base
   has_many :notifications
 
   validates :title, presence: true
-  validates :url, presence: true
+
+  VALID_YOUTUBE_REGEX = /(youtu\.be\/|youtube\.com\/(watch\?(.*&)?v=|(embed|v)\/))([^\?&"\'>]+)/
+  validates :url, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_YOUTUBE_REGEX }
 end
