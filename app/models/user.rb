@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
 
   include Gravtastic
   gravtastic
+  validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
 
-  validates :name, uniqueness: true
 
   has_many :videos
   has_many :comments
