@@ -11,4 +11,8 @@ class Video < ActiveRecord::Base
     regex = /youtube.com.*(?:\/|v=)([^&$]+)/
     "http://img.youtube.com/vi/" + self.url.match(regex)[1] + "/0.jpg"
   end
+
+  VALID_YOUTUBE_REGEX = /(youtu\.be\/|youtube\.com\/(watch\?(.*&)?v=|(embed|v)\/))([^\?&"\'>]+)/
+  validates :url, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_YOUTUBE_REGEX }
 end
