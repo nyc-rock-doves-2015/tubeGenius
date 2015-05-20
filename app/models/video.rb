@@ -4,7 +4,7 @@ class Video < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :notifications
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 255 }
   validates :url, presence: true
 
   def thumbnail_url
