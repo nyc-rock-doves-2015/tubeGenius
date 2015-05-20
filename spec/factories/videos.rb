@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :video do
     user_id 1
-    title Faker::Name.title
+    title "Test Video"
     description Faker::Lorem.paragraph
-    url Faker::Internet.url
+    url "https://www.youtube.com/watch?v=YDXVAvqj6vU"
     availability "Public"
   end
 end
