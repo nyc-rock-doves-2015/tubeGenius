@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
 
   has_secure_password
+  validates :password, length: { minimum: 6 }, allow_blank: true
+
   acts_as_messageable
   has_many :notifications
 
