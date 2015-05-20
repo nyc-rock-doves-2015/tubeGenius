@@ -16,10 +16,7 @@ RSpec.feature 'Delete a video', :type => :feature do
    page.set_rack_session(user_id: user.id)
 
    visit video_path(video)
-
-   click_on "Delete Video"
-
-   expect(page).not_to have_text("Test Title")
+   expect(page).to have_text("Delete Video")
   end
 
 end
