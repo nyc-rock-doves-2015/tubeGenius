@@ -44,11 +44,6 @@ class ApplicationController < ActionController::Base
   def return_point
     session[:return_point] || root_path
   end
-
-  def thumbnail_url(video_url)
-    regex = /youtube.com.*(?:\/|v=)([^&$]+)/
-    "http://img.youtube.com/vi/" + video_url.match(regex)[1] + "/0.jpg"
-  end
 end
 
 
