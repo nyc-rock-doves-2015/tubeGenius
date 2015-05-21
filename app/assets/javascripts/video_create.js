@@ -9,7 +9,4 @@ $(document).on("click", "#createNewVideo", function (event) {
       $form.submit();
     })
   })
-  .fail (function(){
-    console.log("ERROR");
-  })
 })
