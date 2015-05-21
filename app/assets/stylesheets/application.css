@@ -125,23 +125,12 @@ div.video-index {
   text-align: center;
   line-height: 40px;
   background-color: #FFFFFF;
-  border: 1px solid #666;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   -webkit-box-shadow: 2px 2px 4px #888;
   -moz-box-shadow: 2px 2px 4px #888;
   box-shadow: 2px 2px 4px #888;
-}
-
-ul#video-index-breadcrumbs {
-  background-color: #F5F5F5;
-  border: 1px solid #666;
-  -webkit-box-shadow: 1px 1px 1px #888;
-  -moz-box-shadow: 1px 1px 1px #888;
-}
-
-nav#video-index-nav{
 }
 
 #dropdown-menu {
