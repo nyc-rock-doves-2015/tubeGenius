@@ -20,6 +20,7 @@ RSpec.feature 'New video', :type => :feature do
 
     visit root_path
     click_on "Create a Video"
+     fill_in "video_title", :with => "Test Title"
      fill_in "video_url", :with => "https://www.youtube.com/watch?v=ckpwSAv5we8"
      choose('video_availability_personal')
      click_button "Create Video"
@@ -35,6 +36,6 @@ RSpec.feature 'New video', :type => :feature do
     fill_in "video_title", :with => "Test Title"
     click_button "Create Video"
 
-    expect(page).not_to have_text("Test Title")
+    expect(page.status_code).to eq(400)
   end
 end
