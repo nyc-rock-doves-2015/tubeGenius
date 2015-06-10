@@ -70,8 +70,13 @@ div.video-info#video-data{
   left: 1%;
 }
 
-.video-title{
+.video-title {
   position: relative;
   left: 1%;
   font-family:Roboto;
+}
+
+.comment-image {
+  height:100px;
+  width:100px;
 }
