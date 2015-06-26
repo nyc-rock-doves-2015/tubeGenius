@@ -14,10 +14,3 @@ User.create(name: "admin",
                        availability: "Public")
   end
 end
-
-User.all.each do |user|
-  Video.all.each do |video|
-    video.comments.create(user_id: user.id,
-                          content: Faker::Lorem.paragraph)
-  end
-end
