@@ -41,6 +41,19 @@ class Comment < ActiveRecord::Base
     self.commentable.find_video_parent
   end
 
+  def self.format_times(seconds)
+    seconds = seconds.to_i
+    min = (seconds / 60).floor.to_s
+    if seconds % 60 == 0
+      sec = "00"
+    elsif seconds % 60 < 10
+      sec = "0" + (seconds % 60).to_s
+    else
+      sec = (seconds % 60).to_s
+    end
+    min + ":" + sec
+  end
+
 private
 
   def create_notification

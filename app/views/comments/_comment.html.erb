@@ -7,9 +7,11 @@
   </h5>
 <% end %>
 
-<p> <%= comment.start_time %> <%= comment.end_time%> </p>
-
-<%= comment.content %><br>
+<p>
+  @<%= Comment.format_times(comment.start_time) %>-<%= Comment.format_times(comment.end_time)%><br>
+  <br>
+  <%= comment.content %>
+</p>
 
 <%= link_to "Respond to comment", new_comment_path(comment.id) %>
 <ul>
