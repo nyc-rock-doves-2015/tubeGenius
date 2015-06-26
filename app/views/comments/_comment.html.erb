@@ -5,15 +5,14 @@
     - <%= comment.created_at.strftime("%B %d, %Y") %></h5>
     <% end %>
   </h5>
+  <p>
+    @<%= Comment.format_times(comment.start_time) %>-<%= Comment.format_times(comment.end_time)%><br>
+    <br>
+    <%= comment.content %>
+  </p>
+
+  <%= link_to "Respond to comment", new_comment_path(comment.id) %>
+  <ul>
+    <%= render comment.comments %>
+  </ul>
 <% end %>
-
-<p>
-  @<%= Comment.format_times(comment.start_time) %>-<%= Comment.format_times(comment.end_time)%><br>
-  <br>
-  <%= comment.content %>
-</p>
-
-<%= link_to "Respond to comment", new_comment_path(comment.id) %>
-<ul>
-  <%= render comment.comments %>
-</ul>
