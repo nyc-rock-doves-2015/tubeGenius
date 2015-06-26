@@ -1,7 +1,17 @@
-<h5> <%= comment.user ? (link_to comment.user.name, user_path(comment.user)) : "guest" %> at <%= comment.created_at %></h5>
-<p> <%= comment.start_time %> <%= comment.end_time%> </p>
+<% if comment.user %>
+  <h5>
+    <%= link_to comment.user.name, user_path(comment.user) %>
+    <% if comment.created_at %>
+    - <%= comment.created_at.strftime("%B %d, %Y") %></h5>
+    <% end %>
+  </h5>
+<% end %>
 
-<%= comment.content %> 
+<p>
+  @<%= Comment.format_times(comment.start_time) %>-<%= Comment.format_times(comment.end_time)%><br>
+  <br>
+  <%= comment.content %>
+</p>
 
 <%= link_to "Respond to comment", new_comment_path(comment.id) %>
 <ul>

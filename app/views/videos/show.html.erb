@@ -56,7 +56,7 @@
 
     $(document).on("click", ".comment", function (event) {
       video.video.pause();
-    })
+    });
 
     $(document).on("click", "#user-profile-link", function (event) {
       video.video.pause();
@@ -70,7 +70,7 @@
         type: 'get'
       }).done(function (response) {
         $('#user-modal').html(response);
-      })
+      });
 
       $(document).on('close.fndtn.reveal', '#user-modal', function () {
         var modal = $(this);
