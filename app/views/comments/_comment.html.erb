@@ -1,4 +1,12 @@
-<h5> <%= comment.user ? (link_to comment.user.name, user_path(comment.user)) : "guest" %> at <%= t comment.created_at, format: :comment %></h5>
+<% if comment.user %>
+  <h5>
+    <%= link_to comment.user.name, user_path(comment.user) %>
+    <% if comment.created_at %>
+    - <%= comment.created_at.strftime("%B %d, %Y") %></h5>
+    <% end %>
+  </h5>
+<% end %>
+
 <p> <%= comment.start_time %> <%= comment.end_time%> </p>
 
 <%= comment.content %><br>
