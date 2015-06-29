@@ -132,3 +132,39 @@ App.Popcorn.prototype.addComment = function () {
     });
   });
 };
+
+App.init = function () {
+  $(function () {
+    var video_id = parseInt(window.location.href.match(/\d+\/*$/));
+    var results = App.getComments(video_id);
+    video = new App.Popcorn(results[0], "#video", results[1]);
+
+    App.initNewComment(video);
+    video.showComments();
+    video.addComment();
+
+    $(document).on("click", ".comment", function (event) {
+      video.video.pause();
+    });
+
+    $(document).on("click", "#user-profile-link", function (event) {
+      video.video.pause();
+      event.preventDefault();
+      event.stopPropagation();
+
+      var $target = $(event.target);
+
+      $.ajax({
+        url: $target.parent().attr("href"),
+        type: 'get'
+      }).done(function (response) {
+        $('#user-modal').html(response);
+      });
+
+      $(document).on('close.fndtn.reveal', '#user-modal', function () {
+        var modal = $(this);
+        video.video.play();
+      });
+    });
+  });
+};
